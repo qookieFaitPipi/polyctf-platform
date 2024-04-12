@@ -1,0 +1,22 @@
+.about {
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-color: #f4f4f4;
+  bottom: 90px;
+  z-index: 3;
+
+  .content {
+    display: flex;
+  
+    .leftBlock {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 25px;
+      margin-left: 120px;
+      width: 50%;
+      height: 600px;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.params {
+  width: 100%;
+  height: calc(100vh - 106px);
+  margin: 0;
+  
+  .content {
+    display: flex;
+    justify-content: space-around;
+  }
+}

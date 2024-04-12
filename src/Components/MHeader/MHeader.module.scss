@@ -1,0 +1,100 @@
+.header {
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.14);
+  height: 106px;
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #464646;
+    height: 106px;
+
+    .left {
+      margin-left: 40px;
+
+      .title {
+        color: #fff;
+        font-size: 30px;
+        font-weight: 500;
+      }
+    }
+    .middle {
+      display: flex;
+      align-items: center;
+      
+      .input {
+        width: 350px;
+        height: 40px;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        border: 1px #C79EED solid;
+        background-color:#a3a3a3;
+        font-size: 18px;
+        margin-left: 60px;
+      }
+
+      .button {
+        width: 100px;
+        height: 40px;
+        margin-left: 20px;
+        border-radius: 10px;
+        border: 1px #C79EED solid;
+        cursor: pointer;
+      }
+
+      .navBlock {
+        display: flex;
+        justify-content: space-between;
+
+        .navItem {
+          padding: 20px;
+          border-radius: 10px;
+          color: #fff;
+          font-weight: 500;
+          cursor: pointer;
+          transition: 0.5s;
+          text-decoration: none;
+          margin-right: 10px;
+        }
+        .navItem:hover {
+          background-color: #C79EED;
+          transition: 0.5s;
+          cursor: pointer;
+        }
+        .navItemActive {
+          padding: 20px;
+          border-radius: 10px;
+          color: #fff;
+          font-weight: 500;
+          cursor: pointer;
+          transition: 0.5s;
+          text-decoration: none;
+          background-color:#C79EED;
+          margin-right: 10px;
+        }
+      }
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 40px;
+      cursor: pointer;
+
+      .icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+      }
+
+      .username {
+        color: #fff;
+        margin-top: 8px;
+      }
+    }
+  }
+}

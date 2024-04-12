@@ -1,0 +1,15 @@
+.categories {
+  display: flex;
+  flex-direction: column;
+  
+  .list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #111;
+    height: calc(100vh - 106px)
+    
+  }
+}

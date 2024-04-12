@@ -1,0 +1,18 @@
+.task {
+  width: 450px;
+  margin-top: 10px;
+  cursor: pointer;
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px #C79EED solid;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
+
+.task:first-child {
+  margin-top: 0px;
+}

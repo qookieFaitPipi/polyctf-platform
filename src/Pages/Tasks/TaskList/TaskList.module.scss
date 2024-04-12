@@ -1,0 +1,59 @@
+.tasklist {
+  height: calc(100vh - 106px);
+  margin: 0;
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: lightgray;
+
+    .taskBoard {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      margin: auto;
+
+      .taskInfo {
+        max-width: 450px;
+        background-color: #f4f4f4;
+        padding: 20px 20px 20px 20px;
+        border-radius: 10px;
+
+        .description {
+          border: 1px #C79EED solid;
+          border-radius: 10px;
+
+          .descriptionTitle {
+            margin: 10px;
+          }
+
+          .descriptionText {
+            margin: 10px;
+          }
+        }
+
+        .statisics {
+          display: flex;
+          justify-content: center;
+
+          .statBlock {
+            padding: 10px;
+            border: 1px #111 solid;
+            margin: 10px;
+            border-radius: 10px;
+          }
+        }
+      }
+
+      .taskRouter {
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 10px;
+        overflow-y: auto;
+        height: 450px;
+      }
+    }
+  }
+}

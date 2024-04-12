@@ -1,0 +1,3 @@
+# Dirsearch started Mon Apr  8 19:58:54 2024 as: /opt/homebrew/bin/dirsearch -u http://ibks.spbstu.ru:8093/2/person/06e88bae/
+
+301   338B   http://ibks.spbstu.ru:8093/2/person/06e88bae/in    -> REDIRECTS TO: http://ibks.spbstu.ru:8093/2/person/06e88bae/in/
