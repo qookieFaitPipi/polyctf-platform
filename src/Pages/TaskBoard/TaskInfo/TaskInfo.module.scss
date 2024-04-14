@@ -1,0 +1,40 @@
+.taskInfo {
+  width: 50%;
+  max-height: 750px;
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100vh - 106px);
+
+    .taskContent {
+      min-width: 450px;
+      background-color: #f4f4f4;
+      padding: 20px;
+      border-radius: 10px;
+
+      .taskTitle {
+        margin: 10px;
+      }
+
+      .taskText {
+        margin: 10px;
+      }
+
+      .statisics {
+        display: flex;
+        justify-content: center;
+
+        .statBlock {
+          text-align: center;
+          padding: 10px;
+          border: 1px #111 solid;
+          margin: 10px;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}

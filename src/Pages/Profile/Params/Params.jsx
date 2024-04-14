@@ -10,7 +10,7 @@ import { getCookie } from '../../../Hooks/getCookie';
 // components
 import Graph from './Graph/Graph';
 import Rewards from './Rewards/Rewards';
-import Progress from './Progress/Progress';
+import ProgressList from './ProgressList/ProgressList';
 import UserInfo from './UserInfo/UserInfo';
 
 const Params = () => {
@@ -41,7 +41,7 @@ const Params = () => {
           userCountFirstBlood={userParams.user_count_first_blood}
         />
         <div style={{width: '30%'}}>
-          <Progress />
+          <ProgressList />
           <Rewards />
         </div>
         <UserInfo />

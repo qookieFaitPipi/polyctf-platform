@@ -8,7 +8,7 @@ const Category = ({id, name, countAllTasks, image, countSolvedTasks}) => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.category} onClick={() => navigate(`/categories/${id}`)}>
+    <div className={styles.category} onClick={() => navigate(`/categories/${name}`)}>
       <div className={styles.content}>
         <img src={image} className={styles.image} alt="categoryImage" />
         <div className={styles.info}>

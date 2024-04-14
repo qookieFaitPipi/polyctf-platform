@@ -1,1 +1,0 @@
-# polyCTF-platform

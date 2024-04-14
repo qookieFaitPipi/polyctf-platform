@@ -1,0 +1,45 @@
+.task {
+  width: 60%;
+  min-width: 550px;
+  margin: 0 auto;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px #C79EED solid;
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  }
+}
+
+.active {
+  width: 60%;
+  min-width: 550px;
+  margin: 0 auto;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  background: #fff;
+  background: #C79EED;
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px #C79EED solid;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
+
+.task:first-child {
+  margin-top: 0px;
+}
+
+.active:first-child {
+  margin-top: 0px;
+}

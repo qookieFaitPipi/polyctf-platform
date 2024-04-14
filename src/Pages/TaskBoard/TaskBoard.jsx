@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styles from './TaskBoard.module.scss';
 
 // axios
 import axios from 'axios';
@@ -12,9 +13,15 @@ import { getCookie } from '../../Hooks/getCookie';
 // components
 import MHeader from '../../Components/MHeader/MHeader';
 import Invisible from '../../Components/Invisible/Invisible';
+import TaskInfo from './TaskInfo/TaskInfo';
 import TaskList from './TaskList/TaskList';
 
-const Tasks = () => {
+// redux
+import { useSelector } from 'react-redux';
+
+const TaskBoard = () => {
+  const { selectedTaskId } = useSelector((state) => state.TaskSlice);
+
   const [tasks, setTasks] = useState([]);
   const params = useParams();
 
@@ -26,7 +33,7 @@ const Tasks = () => {
       headers: headers
     };
     const userData = {
-      category_id: params.name
+      category_name: params.name
     }
     try {
       axios.post('http://polyctf.alexavr.ru/api/get_tasks', userData, config).then((res) => {
@@ -38,14 +45,17 @@ const Tasks = () => {
   }, []);
   
   return ( 
-    <section>
+    <section className={styles.taskBoard}>
       <MHeader />
       <Invisible />
-      <TaskList 
-        tasks={tasks}
-      />
+      <div className={styles.list}>
+        {selectedTaskId ? <TaskInfo /> : ''}
+        <TaskList 
+          tasks={tasks}
+        />
+      </div>
     </section>
   )
 }
 
-export default React.memo(Tasks);
+export default React.memo(TaskBoard);

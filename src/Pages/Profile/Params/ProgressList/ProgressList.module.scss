@@ -1,4 +1,4 @@
-.progress {
+.progressList {
   display: flex;
   align-items: flex-start;
   height: 50%;
@@ -25,17 +25,6 @@
       border: 1px #C79EED solid;
       border-radius: 10px;
       padding: 10px;
-
-      .listItem {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        justify-content: space-between;
-        margin-top: 10px;
-        border-bottom: 2px #C79EED solid;
-        padding-bottom: 5px;
-
-      }
     }
   }
 }
