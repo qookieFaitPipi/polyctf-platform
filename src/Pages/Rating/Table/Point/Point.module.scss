@@ -1,8 +1,10 @@
 .point {
-  margin-top: 10px;
-  transition: 0.5s;
-  border-radius: 10px 10px 10px 10px;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+
+  border-radius: 50px;
   cursor: pointer;
+  transition: 0.5s;
 
   .content {
     display: flex;
@@ -12,9 +14,16 @@
       text-align: center;
       width: 25%;
       padding: 10px ;
-
     }
   }
+}
+
+.hr:nth-child(2) {
+  display: none;
+}
+
+.hr:nth-child(4) {
+  display: none;
 }
 
 .point:hover {
@@ -28,8 +37,10 @@
 
 .point:nth-child(3) {
   background-color: rgba(162, 85, 234, 0.4);
+  margin-top: 10px;
 }
 
 .point:nth-child(5) {
   background-color: rgba(162, 85, 234, 0.2);
+  margin-top: 10px;
 }

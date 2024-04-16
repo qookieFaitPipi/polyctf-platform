@@ -12,7 +12,7 @@ const Point = ({name, place, sumPoints, countSolvedTasks}) => {
           <div className={styles.text}>{sumPoints}</div>
         </div>
       </div>
-      <hr style={{backgroundColor: '#111', width: '100%'}}/>
+      <hr className={styles.hr} style={{backgroundColor: '#111', width: '80%'}}/>
     </>
   )
 }

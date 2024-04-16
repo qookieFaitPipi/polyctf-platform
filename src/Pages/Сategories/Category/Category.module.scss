@@ -1,48 +1,45 @@
 .category {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   margin: 40px;
-  background-repeat: no-repeat;
   width: 413px;
-  height: 413px;
   cursor: pointer;
+  height: 413px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 12px;
   
   .content {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     height: 100%;
-    justify-content: center;
     align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
 
     .image {
-      border-radius: 10px;
+      border-radius: 12px;
     }
 
     .info {
       display: flex;
       justify-content: space-between;
-      width: 100%;
-      margin: 10px;
+      width: 85%;
       background-color: #fff;
       padding: 10px;
-      border-radius: 10px;
+      border-radius: 50px;
 
       .left {
         color: #000;
+        margin-left: 20px;
       }
       .right {
         color: #000;
+        margin-right: 20px;
+
       }
     }
   }
-}
-
-/* Четные строки */
-.category:nth-child(4n + 1),
-.category:nth-child(4n + 2) {
-  order: 1; /* Объекты в первой строке */
-}
-
-/* Нечетные строки */
-.category:nth-child(4n),
-.category:nth-child(4n - 1) {
-  order: 2; /* Объекты во второй строке */
 }

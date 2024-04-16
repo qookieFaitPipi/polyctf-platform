@@ -14,10 +14,14 @@ export const TaskSlice = createSlice({
     },
     selectTask: (state, action) => {
       state.selectedTask = action.payload;
+    },
+    resetTask: (state, action) => {
+      state.selectedTaskId = undefined
+      state.selectedTask = {}
     }
   },
 })
 
-export const { selectTaskId, selectTask } = TaskSlice.actions
+export const { selectTaskId, selectTask, resetTask } = TaskSlice.actions
 
 export default TaskSlice.reducer

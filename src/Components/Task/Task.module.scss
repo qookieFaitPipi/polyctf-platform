@@ -4,16 +4,24 @@
   margin: 0 auto;
   margin-top: 10px;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 50px;
   background: #fff;
-  border: 1px #C79EED solid;
+  border: 3px #C79EED solid;
+  transition: 0.5s;
 
   .content {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
+}
+
+.task:hover {
+  background-color: rgba(199, 158, 237, 0.7);
+  transition: 0.5s;
 }
 
 .active {
@@ -22,17 +30,19 @@
   margin: 0 auto;
   margin-top: 10px;
   cursor: pointer;
-  border-radius: 10px;
-  background: #fff;
+  border-radius: 50px;
   background: #C79EED;
+  border: 3px #3B1767 solid;
+  transition: 0.5s;
 
   .content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px #C79EED solid;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 

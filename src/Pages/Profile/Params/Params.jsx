@@ -13,6 +13,9 @@ import Rewards from './Rewards/Rewards';
 import ProgressList from './ProgressList/ProgressList';
 import UserInfo from './UserInfo/UserInfo';
 
+// images
+import profileBack from './../../../Assets/images/background/profileBack.svg';
+
 const Params = () => {
   const [userParams, setUserParams] = useState({});
   useEffect(() => {
@@ -32,7 +35,7 @@ const Params = () => {
   }, []);
   
   return (
-    <div className={styles.params}>
+    <div className={styles.params} style={{backgroundImage: `url(${profileBack})`}}>
       <div className={styles.content}>
         <Graph
           sumPoints={userParams.user_sum_points}
@@ -40,7 +43,7 @@ const Params = () => {
           countSolvedTasks={userParams.user_count_solved_tasks}
           userCountFirstBlood={userParams.user_count_first_blood}
         />
-        <div style={{width: '30%'}}>
+        <div className={styles.middle}>
           <ProgressList />
           <Rewards />
         </div>

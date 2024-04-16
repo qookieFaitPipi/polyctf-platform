@@ -1,8 +1,40 @@
 .taskBoard {
-  width: 100vw;
-  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 
   .list {
+    position: relative;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #111;
+    height: calc(100vh - 106px);
+
+
+    .title {
+      display: flex;
+      align-items: center;
+      color: #f4f4f4;
+      margin-top: 20px;
+      margin-bottom: 40px;
+
+      .arrow {
+        margin-left: 10px;
+        width: 26px;
+        height: 26px;
+      }
+    }
+
+    .content {
+      display: flex;
+      width: 100vw;
+      justify-content: space-around;
+      align-items: center;
+      height: auto;
+    }
   }
 }

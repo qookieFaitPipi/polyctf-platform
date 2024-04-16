@@ -13,9 +13,15 @@ import Invisible from '../../Components/Invisible/Invisible';
 import Category from './Category/Category';
 
 // images
-import fon from './../../Assets/images/fon.svg';
+import categoryBack from './../../Assets/images/background/categoryBack.svg';
+
+// redux
+import { useDispatch } from 'react-redux';
+import { resetTask } from '../../Redux/slices/TaskSlice';
 
 const Categories = () => {
+  const dispatch = useDispatch();
+
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -32,13 +38,14 @@ const Categories = () => {
     } catch (err) {
       console.log(err);
     }
+    dispatch(resetTask());
   }, []);
 
   return (
     <section className={styles.categories}>
       <MHeader />
       <Invisible />
-      <div className={styles.list} style={{backgroundImage: `url(${fon})`}}>
+      <div className={styles.list} style={{backgroundImage: `url(${categoryBack})`}}>
         {categories.map((obj) => {
           return <Category 
             key={obj.category_id} 

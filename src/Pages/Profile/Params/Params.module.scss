@@ -1,10 +1,20 @@
 .params {
   width: 100%;
   height: calc(100vh - 106px);
-  margin: 0;
+  background: #111;
   
   .content {
     display: flex;
     justify-content: space-around;
+    height: calc(100vh - 106px);
+    width: 100vw;
+
+    .middle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 30%;
+    }
   }
 }

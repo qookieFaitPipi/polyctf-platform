@@ -1,38 +1,45 @@
 .taskInfo {
-  width: 50%;
-  max-height: 750px;
+  background-color: rgba(244, 244, 244, 0.7);
+  border-radius: 12px;
+  padding: 20px;
+  height: 400px;
 
   .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: calc(100vh - 106px);
 
-    .taskContent {
-      min-width: 450px;
-      background-color: #f4f4f4;
-      padding: 20px;
-      border-radius: 10px;
+    .description {
+      border-right: 3px #3B1767 solid;
+      border-left: 3px #3B1767 solid;
+      border-bottom: 3px #3B1767 solid;
+      border-radius: 30px 30px 12px 12px;
 
       .taskTitle {
         margin: 10px;
       }
-
+  
       .taskText {
         margin: 10px;
       }
+  
+    }
 
-      .statisics {
-        display: flex;
-        justify-content: center;
+    .statisics {
+      display: flex;
+      justify-content: center;
 
-        .statBlock {
-          text-align: center;
-          padding: 10px;
-          border: 1px #111 solid;
-          margin: 10px;
-          border-radius: 10px;
+      .statBlock {
+        text-align: center;
+        padding: 10px;
+        border: 3px #3B1767 solid;
+        margin: 10px;
+        border-radius: 15px;
+
+        .title {
+          border-bottom: 1px #3B1767 solid;
+          padding: 5px;
+        }
+
+        .hr {
+          margin: 5px;
         }
       }
     }

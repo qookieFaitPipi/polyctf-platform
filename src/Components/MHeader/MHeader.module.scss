@@ -9,63 +9,45 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #464646;
+    background-color: #222222;
     height: 106px;
 
     .left {
       margin-left: 40px;
 
-      .title {
-        color: #fff;
-        font-size: 30px;
-        font-weight: 500;
+      .logo {
+        height: 58px;
+        width: 130px;
+        cursor: pointer;
       }
     }
     .middle {
       display: flex;
       align-items: center;
-      
-      .input {
-        width: 350px;
-        height: 40px;
-        border: none;
-        outline: none;
-        border-radius: 10px;
-        border: 1px #C79EED solid;
-        background-color:#a3a3a3;
-        font-size: 18px;
-        margin-left: 60px;
-      }
-
-      .button {
-        width: 100px;
-        height: 40px;
-        margin-left: 20px;
-        border-radius: 10px;
-        border: 1px #C79EED solid;
-        cursor: pointer;
-      }
 
       .navBlock {
         display: flex;
         justify-content: space-between;
 
         .navItem {
+          text-align: center;
           padding: 20px;
           border-radius: 10px;
-          color: #fff;
+          color: #f2f4f3;
           font-weight: 500;
           cursor: pointer;
           transition: 0.5s;
           text-decoration: none;
           margin-right: 10px;
+          width: 100px;
         }
         .navItem:hover {
-          background-color: #C79EED;
+          background-color: rgba(199, 158, 237, 0.9) !important;
           transition: 0.5s;
           cursor: pointer;
         }
         .navItemActive {
+          text-align: center;
           padding: 20px;
           border-radius: 10px;
           color: #fff;
@@ -73,10 +55,52 @@
           cursor: pointer;
           transition: 0.5s;
           text-decoration: none;
-          background-color:#C79EED;
+          background-color: rgba(199, 158, 237, 0.7);
           margin-right: 10px;
+          width: 100px;
+        }
+        .navItemActive:hover {
+          background-color: rgba(199, 158, 237, 0.9) !important;
         }
       }
+    }
+
+    .flagbox {
+      display: flex;
+      align-items: center;
+      margin-left: 60px;
+
+      .input {
+        width: 350px;
+        height: 35px;
+        border: none;
+        outline: none;
+        border-radius: 50px;
+        background-color:#a3a3a3;
+        font-size: 18px;
+        padding-left: 15px;
+      }
+
+      .input::placeholder {
+        font-family: "Roboto Condensed", sans-serif;
+      }
+
+      .button {
+        width: 80px;
+        height: 35px;
+        margin-left: 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        border: none;
+        background-color: rgba(199, 158, 237, 0.9);
+        color: #3B1767;
+        font-weight: 600;
+        transition: 0.5s;
+      }
+      .button:hover {
+        background-color: rgba(199, 158, 237, 1);
+      }
+
     }
     .right {
       display: flex;
@@ -94,6 +118,8 @@
       .username {
         color: #fff;
         margin-top: 8px;
+        font-weight: 550;
+        color: #C79EED;
       }
     }
   }

@@ -4,13 +4,15 @@ import styles from './Category.module.scss';
 // react-router-dom
 import { useNavigate } from 'react-router';
 
+// images
+import cat1 from './../../../Assets/images/category/cat1.svg';
+
 const Category = ({id, name, countAllTasks, image, countSolvedTasks}) => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.category} onClick={() => navigate(`/categories/${name}`)}>
+    <div className={styles.category} onClick={() => navigate(`/categories/${name}`)} style={{backgroundImage: `url(${image})`}}>
       <div className={styles.content}>
-        <img src={image} className={styles.image} alt="categoryImage" />
         <div className={styles.info}>
           <div className={styles.left}>
             {name}

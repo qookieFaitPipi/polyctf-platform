@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './TaskBoard.module.scss';
 
+// react-transition-group
+import { CSSTransition } from 'react-transition-group';
+
 // axios
 import axios from 'axios';
 
@@ -18,9 +21,15 @@ import TaskList from './TaskList/TaskList';
 
 // redux
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
+// images
+import arrow from './../../Assets/images/icons/arrow.svg';
+import categoryBack from './../../Assets/images/background/categoryBack.svg';
 
 const TaskBoard = () => {
-  const { selectedTaskId } = useSelector((state) => state.TaskSlice);
+  const { selectedTaskId, selectedTask } = useSelector((state) => state.TaskSlice);
+  const dispatch = useDispatch();
 
   const [tasks, setTasks] = useState([]);
   const params = useParams();
@@ -42,17 +51,24 @@ const TaskBoard = () => {
     } catch(err) {
       console.log(err);
     }
+
   }, []);
+
   
   return ( 
     <section className={styles.taskBoard}>
       <MHeader />
       <Invisible />
-      <div className={styles.list}>
-        {selectedTaskId ? <TaskInfo /> : ''}
-        <TaskList 
-          tasks={tasks}
-        />
+      <div className={styles.list} style={{backgroundImage: `url(${categoryBack})`}}>
+        <div className={styles.title}>
+          <div style={{fontSize: '20px'}}>{params.name.toUpperCase()}</div><img className={styles.arrow} src={arrow} alt="" /><div style={{textDecoration: 'underline', marginLeft: '10px', fontSize: '20px', fontWeight: 500}}>TASKS</div>
+        </div>
+        <div className={styles.content}>
+          <CSSTransition in={selectedTaskId ? true : false} classNames='alert' timeout={400} unmountOnExit><TaskInfo /></CSSTransition>
+          <TaskList
+            tasks={tasks}
+          />
+        </div>
       </div>
     </section>
   )

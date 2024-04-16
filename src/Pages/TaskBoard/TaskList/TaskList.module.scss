@@ -1,20 +1,13 @@
 .taskList {
-  width: 50%;
-  max-height: 750px;
+  background-color: rgba(244, 244, 244, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  height: 400px;
 
   .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: calc(100vh - 106px);
-
-    .taskRouter {
-      min-width: 450px;
-      background-color: #f4f4f4;
-      padding: 20px;
-      border-radius: 10px;
-      overflow-y: auto;
-    }
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    height: 100%;
   }
 }

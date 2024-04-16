@@ -1,6 +1,9 @@
 .categories {
+  position: relative;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  z-index: 3;
   
   .list {
     display: flex;
@@ -9,7 +12,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #111;
-    height: calc(100vh - 106px)
-    
+    overflow-y: auto;
+    height: calc(100vh - 106px);
+    scrollbar-width: none;
   }
 }
