@@ -1,7 +1,6 @@
 .point {
   margin-top: 2.5px;
   margin-bottom: 2.5px;
-
   border-radius: 50px;
   cursor: pointer;
   transition: 0.5s;
@@ -18,11 +17,25 @@
   }
 }
 
+.hr {
+  border: 1px rgba(34, 34, 34, 0.2) solid;
+  width: 80%;
+  height: 1px;
+}
+
 .hr:nth-child(2) {
   display: none;
 }
 
 .hr:nth-child(4) {
+  display: none;
+}
+
+.hr:nth-child(6) {
+  display: none;
+}
+
+.hr:last-child {
   display: none;
 }
 
@@ -43,4 +56,8 @@
 .point:nth-child(5) {
   background-color: rgba(162, 85, 234, 0.2);
   margin-top: 10px;
+}
+
+.point:last-child {
+  margin-bottom: 20px;
 }

@@ -7,13 +7,36 @@
   
   .list {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #111;
-    overflow-y: auto;
     height: calc(100vh - 106px);
-    scrollbar-width: none;
+
+    .title {
+      position: relative;
+      color: #fff;
+      text-align: center;
+      margin: auto;
+      background-color: rgba(17, 17, 17, 0) !important;
+      line-height: 10px;
+      margin-top: 70px;
+      height: 93px;
+    }
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      margin: 0 auto;
+      width: 100vw;
+      margin-top: 20px;
+      position: relative;
+      z-index: 4 !important;
+    }
   }
 }

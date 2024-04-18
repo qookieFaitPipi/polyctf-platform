@@ -28,7 +28,7 @@ const Graph = ({sumPoints, placeInRating, countSolvedTasks, userCountFirstBlood}
       headers: headers
     };
     try {
-      axios.get("http://polyctf.alexavr.ru/api/get_categories", config).then((res) => {
+      axios.get("https://polyctf.alexavr.ru/api/get_categories", config).then((res) => {
         setCategories(res.data);
       })
     } catch (err) {
@@ -88,26 +88,25 @@ const Graph = ({sumPoints, placeInRating, countSolvedTasks, userCountFirstBlood}
           <div className={styles.row1}>
             <div className={styles.statBlock}>
               <div className={styles.colored}>{sumPoints}</div>
-              <div className={styles.text}>Набрано баллов</div>
+              <div className={styles.text}>SCORE</div>
             </div>
             <div className={styles.statBlock}>
-              <div className={styles.text}>Первая кровь</div>
+              <div className={styles.text}>FIRST BLOOD</div>
               <div className={styles.colored}>{userCountFirstBlood}</div>
             </div>
           </div>
           <div className={styles.row2}>
-            <img src={raitLeft} alt="" />
+            <img src={raitLeft} style={{marginLeft: '35px'}} alt="" />
             <div className={styles.statBlock}>
               <div className={styles.colored}>{placeInRating}</div>
-              <div className={styles.text}>Место в рейтинге</div>
+              <div className={styles.text}>PLACE</div>
             </div>
-            <img src={raitRight} alt="" />
+            <img src={raitRight} style={{marginRight: '35px'}} alt="" />
           </div>
           <div className={styles.row3}>
-            <img src={raitTasks} alt="" />
             <div className={styles.statBlock}>
               <div className={styles.colored}>{countSolvedTasks}</div>
-              <div className={styles.text}>Заданий выполнено</div>
+              <div className={styles.text}>TASKS SOLVED</div>
             </div>
           </div>
         </div>

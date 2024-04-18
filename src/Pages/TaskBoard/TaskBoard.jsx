@@ -45,7 +45,7 @@ const TaskBoard = () => {
       category_name: params.name
     }
     try {
-      axios.post('http://polyctf.alexavr.ru/api/get_tasks', userData, config).then((res) => {
+      axios.post('https://polyctf.alexavr.ru/api/get_tasks', userData, config).then((res) => {
         setTasks(res.data);
       });
     } catch(err) {

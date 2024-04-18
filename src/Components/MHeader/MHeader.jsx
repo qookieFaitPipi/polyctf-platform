@@ -37,7 +37,7 @@ const MHeader = () => {
       headers: headers
     };
     try {
-      axios.get("http://polyctf.alexavr.ru/api/get_user_image", config).then((res) => {
+      axios.get("https://polyctf.alexavr.ru/api/get_user_image", config).then((res) => {
         setUserImage(res.data);
       })
     } catch (err) {
@@ -56,7 +56,7 @@ const MHeader = () => {
       flag: flag
     }
     try {
-      axios.post('http://polyctf.alexavr.ru/api/check_flag', userData, config).then((res) => {
+      axios.post('https://polyctf.alexavr.ru/api/check_flag', userData, config).then((res) => {
         console.log(res);
         if(res.data.is_correct) {
           setFlag('');

@@ -1,4 +1,5 @@
 .reward {
+  width: 100%;
   margin-top: 10px;
   
   .content {
@@ -6,13 +7,19 @@
     align-items: center;
   
     .rewardInfo {
-  
+      margin-left: 10px;
+
       .rewardTitle {
-  
+        color: #f2f4f3;
+        font-weight: 550;
+
+
       }
   
       .rewardText {
-  
+        color: #f2f4f3;
+
+
       }
     }
   }

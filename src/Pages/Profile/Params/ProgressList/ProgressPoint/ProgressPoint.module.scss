@@ -1,13 +1,18 @@
 .progressPoint {
   width: 100%;
-  
+  border-bottom: 2px #C79EED solid;
+
   .content {
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
     margin-top: 10px;
-    border-bottom: 2px #C79EED solid;
     padding-bottom: 5px;
+    color: #f2f4f3;
   }
+}
+
+.progressPoint:last-child {
+  border: none;
 }

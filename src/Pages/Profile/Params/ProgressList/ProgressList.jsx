@@ -21,7 +21,7 @@ const ProgressList = () => {
       headers: headers
     };
     try {
-      axios.get("http://polyctf.alexavr.ru/api/get_progress", config).then((res) => {
+      axios.get("https://polyctf.alexavr.ru/api/get_progress", config).then((res) => {
         setProgressList(res.data);
       })
     } catch (err) {

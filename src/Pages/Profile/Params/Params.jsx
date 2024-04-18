@@ -26,7 +26,7 @@ const Params = () => {
       headers: headers
     };
     try {
-      axios.get("http://polyctf.alexavr.ru/api/get_profile", config).then((res) => {
+      axios.get("https://polyctf.alexavr.ru/api/get_profile", config).then((res) => {
         setUserParams(res.data);
       })
     } catch (err) {

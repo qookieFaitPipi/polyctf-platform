@@ -27,7 +27,7 @@ const Entry = ({entryModalState, setEntryModalState, setRegModalState}) => {
     }
 
     try {
-      axios.post('http://polyctf.alexavr.ru/api/login', userData).then((response) => {
+      axios.post('https://polyctf.alexavr.ru/api/login', userData).then((response) => {
         if(response.status === 200) {
           dispatch(login({
             userLogin: userLogin,

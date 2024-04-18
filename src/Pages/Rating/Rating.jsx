@@ -23,7 +23,7 @@ const Rating = () => {
     };
     
     try {
-      axios.get("http://polyctf.alexavr.ru/api/get_rating", config).then((res) => {
+      axios.get("https://polyctf.alexavr.ru/api/get_rating", config).then((res) => {
         setPoints(res.data);
       })
     } catch (err) {

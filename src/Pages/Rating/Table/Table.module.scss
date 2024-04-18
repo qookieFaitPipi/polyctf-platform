@@ -11,6 +11,7 @@
     height: 100%;
     background-color: #111;
     //background-color: #f2f4f3;
+    background-size: cover;
 
     .top {
       display: flex;
@@ -27,11 +28,12 @@
         outline: none;
         font-size: 16px;
         padding-left: 10px;
-        background-color: #f2f4f3;
+        background-color: rgba(242, 244, 243, 0.5);
       }
 
       .search::placeholder {
         font-family: "Roboto Condensed", sans-serif;
+        color: #fff;
       }
     }
 
@@ -40,8 +42,8 @@
       flex-direction: column;
       max-width: 1000px;
       width: 60%;
-      padding: 20px 20px 0px 20px;
-      background-color: #f2f4f3;
+      padding: 20px 20px 10px 20px;
+      background-color: rgba(242, 244, 243, 0.7);
       border-radius: 10px;
 
       .top {

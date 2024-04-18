@@ -2,10 +2,18 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin: 40px;
-  width: 413px;
+  margin: 20px;
+  //width: 440px;
+  //height: 360px;
+
+  width: 352px;
+  height: 288px;
+  
+  //width: 352px;
+  //height: 338px;
+  //flex-basis: calc(30%);
+
   cursor: pointer;
-  height: 413px;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 12px;
@@ -43,3 +51,7 @@
     }
   }
 }
+
+// .category:nth-child(2n+2) {
+//   margin-top: 100px;
+// }

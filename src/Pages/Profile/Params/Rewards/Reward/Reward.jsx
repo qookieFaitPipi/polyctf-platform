@@ -13,7 +13,7 @@ const Reward = () => {
           <div className={styles.rewardTitle}>
             PEACEMAKER
           </div>
-          <div className={styles.rewardeText}>
+          <div className={styles.rewardText}>
             Завершить все здаания без первой крови
           </div>
         </div>

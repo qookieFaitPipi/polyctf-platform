@@ -14,6 +14,7 @@ import Category from './Category/Category';
 
 // images
 import categoryBack from './../../Assets/images/background/categoryBack.svg';
+import categoryTopBack from './../../Assets/images/background/categoryTopBack.svg';
 
 // redux
 import { useDispatch } from 'react-redux';
@@ -32,7 +33,7 @@ const Categories = () => {
       headers: headers
     };
     try {
-      axios.get("http://polyctf.alexavr.ru/api/get_categories", config).then((res) => {
+      axios.get("https://polyctf.alexavr.ru/api/get_categories", config).then((res) => {
         setCategories(res.data);
       })
     } catch (err) {
@@ -45,17 +46,22 @@ const Categories = () => {
     <section className={styles.categories}>
       <MHeader />
       <Invisible />
-      <div className={styles.list} style={{backgroundImage: `url(${categoryBack})`}}>
-        {categories.map((obj) => {
-          return <Category 
-            key={obj.category_id} 
-            id={obj.category_id} 
-            name={obj.category_name}
-            countAllTasks={obj.category_all_tasks}
-            image={obj.category_image}
-            countSolvedTasks={obj.category_solved_tasks}
-          />
-        })}
+      <div className={styles.list} style={{backgroundImage: `url(${categoryTopBack})`}}>
+        <div className={styles.title}>
+          <div>CHOOSE YOUR</div><br /> <div style={{textDecoration: 'underline', fontSize: '20px', letterSpacing: '1.2px'}}>CATEGORY</div>
+        </div>
+        <div className={styles.content}>
+          {categories.map((obj) => {
+            return <Category 
+              key={obj.category_id} 
+              id={obj.category_id} 
+              name={obj.category_name}
+              countAllTasks={obj.category_all_tasks}
+              image={obj.category_image}
+              countSolvedTasks={obj.category_solved_tasks}
+            />
+          })}
+        </div>
       </div>
     </section>
   )

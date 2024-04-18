@@ -6,8 +6,8 @@
   width: 30%;
 
   .content {
-    background-color: #F4F4F4;
-    border-radius: 10px;
+    background-color: rgba(242, 244, 243, 0.4);
+    border-radius: 12px;
     padding: 20px;
     //height: auto;
     width: 100%;
@@ -22,21 +22,28 @@
     .bottom {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: space-around;
+      width: 80% !important;
+      margin: 0 auto;
 
       .row1 {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
+        margin-top: 5px;
         width: 100%;
-        margin-top: 20px;
 
         .statBlock {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
           padding: 10px;
-          border-radius: 15px;
-          background-color: #ccc;
+          border-radius: 12px;
+          background-color: rgba(242, 244, 243, 0.5);
+          margin: 0px 0px 10px 0px;
 
           .colored {
-            color: #C79EED;
+            color: #3B1767;
             font-size: 20px;
             font-weight: 550;
           }
@@ -44,22 +51,31 @@
           .text {
             color: #111;
             font-size: 15px;
+            font-weight: 550;
           }
+        }
+
+        .statBlock:nth-child(1) {
+          width: 40%;
+        }
+        .statBlock:nth-child(2) {
+          width: 45%;
         }
       }
 
       .row2 {
         display: flex;
-        justify-content: space-evenly;
-        padding: 10px;
-        border-radius: 15px;
-        background-color: #ccc;
-        margin-top: 20px;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0px 10px 0px;
+        border-radius: 12px;
+        background-color: rgba(242, 244, 243, 0.5);
 
         .statBlock {
 
+
           .colored {
-            color: #C79EED;
+            color: #3B1767;
             font-size: 20px;
             font-weight: 550;
           }
@@ -67,21 +83,29 @@
           .text {
             color: #111;
             font-size: 15px;
+            font-weight: 550;
+
           }
         }
       }
 
       .row3 {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: flex-start;
         align-items: center;
-        width: 100%;
-        margin-top: 20px;
+        margin-top: 10px;
 
         .statBlock {
+          display: flex;
+          flex-direction: column;
+          padding: 10px;
+          background-color: rgba(242, 244, 243, 0.5);
+          border-radius: 12px;
+          width: 50%;
+          margin: 0 auto;
 
           .colored {
-            color: #C79EED;
+            color: #3B1767;
             font-size: 20px;
             font-weight: 550;
           }
@@ -89,6 +113,8 @@
           .text {
             color: #111;
             font-size: 15px;
+            font-weight: 550;
+
           }
         }
       }

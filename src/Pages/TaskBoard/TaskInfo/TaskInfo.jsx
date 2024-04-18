@@ -33,7 +33,7 @@ const TaskInfo = () => {
       task_id: selectedTaskId
     }
     try {
-      axios.post('http://polyctf.alexavr.ru/api/get_task', userData, config).then((res) => {
+      axios.post('https://polyctf.alexavr.ru/api/get_task', userData, config).then((res) => {
         dispatch(selectTask(res.data))
       });
     } catch(err) {
@@ -46,31 +46,31 @@ const TaskInfo = () => {
       <div className={styles.content}>
         <div className={styles.description}>
           <Task id={selectedTaskId} name={selectedTask.task_name} />
-          <div className={styles.taskTitle}>Описание:</div>
+          <div className={styles.taskTitle}>DESCRIPTION:</div>
           <div className={styles.taskText}>{selectedTask.task_description}</div>
-          <div className={styles.taskTitle}>Уровень сложности:</div>
+          <div className={styles.taskTitle}>DEGREE OF DEFFICULTY:</div>
           <div className={styles.taskText}>{selectedTask.task_level}</div>
-          <div className={styles.taskTitle}>Ссылки на внешние ресурсы:</div>
+          <div className={styles.taskTitle}>LINK:</div>
           <div className={styles.taskText}>https://youtu.be/xm3YgoEiEDc?si=ZeJrpjMbBkiXka7x</div>
         </div>
           
         <div className={styles.statisics}>
           <div className={styles.statBlock}>
-            <div className={styles.title}>Выполнили</div>
+            <div className={styles.title}>COMPLETED</div>
             <div className={styles.hr}>{selectedTask.task_count_done}</div>
-            <div className={styles.text}>раз</div>
+            <div className={styles.text}>times</div>
           </div>
 
           <div className={styles.statBlock}>
-            <div className={styles.title}>Первая кровь</div>
+            <div className={styles.title}>FIRST BLOOD</div>
             <div className={styles.hr}>{selectedTask.task_first_blood_name}</div>
             <div className={styles.text}>33/09/2054</div> 
           </div>
 
           <div className={styles.statBlock}>
-            <div className={styles.title}>Награда</div>
+            <div className={styles.title}>AWARD</div>
             <div className={styles.hr}>{selectedTask.task_count_points}</div>
-            <div className={styles.text}>баллов</div> 
+            <div className={styles.text}>points</div> 
           </div>
         </div>
       </div>

@@ -4,9 +4,6 @@ import styles from './UserInfo.module.scss';
 // axios
 import axios from 'axios';
 
-// images
-import user from '../../../../Assets/images/icons/elipse.svg'
-
 // hooks
 import { getCookie } from './../../../../Hooks/getCookie';
 
@@ -30,7 +27,7 @@ const UserInfo = () => {
       headers: headers
     };
     try {
-      axios.get("http://polyctf.alexavr.ru/api/get_user_image", config).then((res) => {
+      axios.get("https://polyctf.alexavr.ru/api/get_user_image", config).then((res) => {
         setUserImage(res.data);
       })
     } catch (err) {
@@ -45,10 +42,12 @@ const UserInfo = () => {
         <div className={styles.username}>{username}</div>
         <div className={styles.contacts}>
           <div className={styles.left}>
-            <div>Мои контакты @eianisimov</div>
+            <div className={styles.title}>MY CONTACTS</div>
+            <div className={styles.colored}>@eianisimov</div>
           </div>
-          <div className={styles.left}>
-            <div>На POLYCTF 7 дней</div>
+          <div className={styles.right}>
+            <div className={styles.title}>ON POLYCTF</div>
+            <div className={styles.colored}>7 дней</div>
           </div>
         </div>
       </div>

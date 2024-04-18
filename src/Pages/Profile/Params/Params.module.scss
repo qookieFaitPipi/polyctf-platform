@@ -2,7 +2,8 @@
   width: 100%;
   height: calc(100vh - 106px);
   background: #111;
-  
+  background-size: cover;
+
   .content {
     display: flex;
     justify-content: space-around;
