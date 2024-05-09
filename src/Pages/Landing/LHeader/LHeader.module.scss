@@ -1,5 +1,4 @@
 .header {
-  width: 100%;
 
   .content {
     display: flex;
@@ -8,16 +7,14 @@
     background-color: #464646;
     background: linear-gradient(to bottom, #222222 56%, #f4f4f4 47%);
     background-repeat: no-repeat;
-    z-index: -1;
     
     .leftBlock {
       position: relative;
-      z-index: 4 !important;
       
       .logo {
         position: relative;
-        z-index: 4 !important;
-        height: 200px;
+        z-index: 4;
+        height: 280px;
         cursor: pointer;
       }
     }
@@ -26,14 +23,16 @@
       display: flex;
       align-items: center;
       color: #fff;
+      margin-right: 110px;
+      margin-bottom: 40px;
 
       .navItem {
-        margin: 10px;
-        font-size: 20px;
+        font-size: 24px;
         border-right: 1px #fff solid;
         padding-right: 20px;
         cursor: pointer;
-        margin-bottom: 50px;
+        margin: 10px;
+        font-weight: 200;
       }
       .navItem:last-child {
         border-right: none;
@@ -42,29 +41,27 @@
       .entryBlock {
         display: flex;
         align-items: center;
+        background-color: #3e3e3e;
+        border-radius: 36px;
+        padding: 10px 20px 10px 20px;
+        margin-left: 30px;
 
         .entry {
           display: flex;
           align-items: center;
-          margin: 10px;
           font-size: 20px;
-          margin-bottom: 40px;
           cursor: pointer;
-          margin-left: 40px;
-          margin-bottom: 50px;
-          margin-right: 0px;
+          font-weight: 300;
+
         }
   
         .entryIcon {
           display: flex;
           align-items: center;
-          margin: 10px;
           width: 30px;
           height: 30px;
-          margin-top: 12px;
           cursor: pointer;
-          margin-bottom: 50px;
-          margin-left: 5px;
+          margin-left: 10px;
         }
       }
     }

@@ -3,49 +3,32 @@ import React, { useState } from 'react';
 // components
 import LHeader from './LHeader/LHeader';
 import About from './About/About';
-
+import News from './News/News';
+import Gallery from './Gallery/Gallery'
+import Footer from './Footer/Footer';
 
 // modals
-import Entry from './Modals/Entry/Entry';
-import Register from './Modals/Register/Register';
-
+import Auth from './Modals/Auth/Auth';
+import Detail from './Modals/Detail/Detail';
 
 const Landing = () => {
-  const [entryModalState, setEntryModalState] = useState(false);
-  const [regModalState, setRegModalState] = useState(false);
+  const [authModalState, setAuthModalState] = useState(false);
 
   return (
-    <section>
+    <section style={{backgroundColor: '#f2f4f3'}}>
       <LHeader 
-        // entry
-        entryModalState={entryModalState}
-        setEntryModalState={setEntryModalState}
-        
-        // register
-        regModalState={regModalState}
-        setRegModalState={setRegModalState}
+        authModalState={authModalState}
+        setAuthModalState={setAuthModalState}
       />
       <About />
-
-      <Entry
-        // entry
-        entryModalState={entryModalState}
-        setEntryModalState={setEntryModalState}
-
-        // register
-        regModalState={regModalState}
-        setRegModalState={setRegModalState}
+      <News />
+      <Gallery />
+      <Footer />
+      <Auth 
+        authModalState={authModalState}
+        setAuthModalState={setAuthModalState}
       />
-
-      <Register 
-        // entry
-        entryModalState={entryModalState}
-        setEntryModalState={setEntryModalState}
-      
-        // register
-        regModalState={regModalState}
-        setRegModalState={setRegModalState}
-      />
+      <Detail />
     </section>
   )
 }

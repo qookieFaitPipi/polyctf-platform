@@ -4,9 +4,6 @@ import styles from './Category.module.scss';
 // react-router-dom
 import { useNavigate } from 'react-router';
 
-// images
-import cat1 from './../../../Assets/images/category/cat1.svg';
-
 const Category = ({id, name, countAllTasks, image, countSolvedTasks}) => {
   const navigate = useNavigate();
 

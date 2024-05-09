@@ -3,6 +3,7 @@ import styles from './Task.module.scss';
 
 // images
 import task_compl from './../../Assets/images/icons/task_comp.svg'
+
 // redux
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -13,7 +14,7 @@ const Task = ({id, name, solved}) => {
   const { selectedTaskId } = useSelector((state) => state.TaskSlice);
 
   return (
-    <div className={selectedTaskId === id ? styles.active : styles.task} onClick={() => {dispatch(selectTaskId(id))}}>
+    <div className={selectedTaskId === id ? styles.active : solved ? styles.solved : styles.task} onClick={() => {dispatch(selectTaskId(id))}}>
       <div className={styles.content}>
         <div className={styles.title}>
           {name}

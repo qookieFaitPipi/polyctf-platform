@@ -62,3 +62,36 @@
 .active:first-child {
   margin-top: 0px;
 }
+
+.solved {
+  width: 60%;
+  min-width: 550px;
+  margin: 0 auto;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 50px;
+  background: #C79EED;
+  border: 3px #3B1767 solid;
+  transition: 0.5s;
+  opacity: 0.6;
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    .title {
+      font-weight: 550;
+      color: #3B1767;
+    }
+  }
+}
+
+
+.solved:first-child {
+  margin-top: 0px;
+}

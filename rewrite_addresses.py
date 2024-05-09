@@ -1,7 +1,7 @@
 import os
 
-post = "https://polyctf.alexavr.ru"
-prev = "http://polyctf.alexavr.ru"
+prev = "https://polyctf.alexavr.ru/"
+post = "https://hosting.alexavr.ru/"
 
 def rewrite(path):
     for i in os.listdir(path):

@@ -3,8 +3,8 @@
   background-repeat: no-repeat;
   background-position: right center;
   background-color: #f4f4f4;
-  bottom: 90px;
-  z-index: 3;
+  background-size: contain;
+  bottom: 125px;
 
   .content {
     display: flex;
@@ -14,8 +14,10 @@
       align-items: center;
       justify-content: center;
       line-height: 25px;
-      margin-left: 120px;
-      width: 50%;
+      margin-left: 110px;
+      font-size: 19px;
+      font-weight: 300;
+      width: 40%;
       height: 600px;
     }
   }

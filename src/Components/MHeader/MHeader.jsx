@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './MHeader.module.scss';
 
+// axios
+import axios from 'axios';
+
 // react-toastify
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-// axios
-import axios from 'axios';
 
 // react-router-dom
 import { Link } from 'react-router-dom';
@@ -15,30 +15,35 @@ import { Link } from 'react-router-dom';
 import { getCookie } from '../../Hooks/getCookie';
 
 // images
-import logo2 from './../../Assets/images/logo5.png';
+import logo from './../../Assets/images/main-logo.png';
+
+// redux
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { setUserInfo } from '../../Redux/slices/UserSlice';
 
 const MHeader = () => {
-  const [username, setUsername] = useState('');
-  const [userImage, setUserImage] = useState('');
+  const { username, image } = useSelector((state) => state.UserSlice);
+  const [location, setLocation] = useState('CATEGORIES')
+
   const [flag, setFlag] = useState('');
   const notifySuccess = (e) => toast.success(e);
   const notifyError = (e) => toast.error(e);
+  const notifyWarning = (e) => toast.warning(e);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const tokenParts = getCookie('token').split('.');
-    const payload = JSON.parse(atob(tokenParts[1]));    
-    const user_name = payload.sub;
-    setUsername(user_name);
-
     const headers = {
       Authorization: `Bearer ${getCookie('token')}`
     }
     const config = {
       headers: headers
     };
+    
     try {
-      axios.get("https://polyctf.alexavr.ru/api/get_user_image", config).then((res) => {
-        setUserImage(res.data);
+      axios.get("https://hosting.alexavr.ru/api/get_user_info", config).then((res) => {
+        dispatch(setUserInfo({username: res.data.username, image: res.data.image}))
       })
     } catch (err) {
       console.log(err);
@@ -55,14 +60,15 @@ const MHeader = () => {
     const userData = {
       flag: flag
     }
+
     try {
-      axios.post('https://polyctf.alexavr.ru/api/check_flag', userData, config).then((res) => {
-        console.log(res);
+      axios.post('https://hosting.alexavr.ru/api/check_flag', userData, config).then((res) => {
         if(res.data.is_correct) {
           setFlag('');
-          notifySuccess('flag is correct');
+          notifySuccess('Flag is correct');
         } else {
-          notifyError('wrong flag');
+          notifyError('Wrong flag');
+          //notifyWarning('Таск уже выполнен');
         }
       });
     } catch(err) {
@@ -86,26 +92,26 @@ const MHeader = () => {
       />
       <div className={styles.content}>
         <div className={styles.left}>
-          <img className={styles.logo} src={logo2} width="346px" height="147px" alt="" />          
+          <img className={styles.logo} src={logo} width="346px" height="147px" alt="" />          
         </div>
         <div className={styles.middle}>
           <div className={styles.navBlock}>
-            <Link to='/categories' className={window.location.pathname.split('/').find(path => path === 'categories') ? styles.navItemActive : styles.navItem}>CATEGORIES</Link>
-            <Link to='/rating' className={window.location.pathname === '/rating' ? styles.navItemActive : styles.navItem}>RATING</Link>
-            <Link to='/profile' className={window.location.pathname === '/profile' ? styles.navItemActive : styles.navItem}>PROFILE</Link>
+            <Link to='/categories' className={location.split('/').find(path => path === 'CATEGORIES') ? styles.navItemActive : styles.navItem} onClick={() => setLocation('CATEGORIES')}>CATEGORIES</Link>
+            <Link to='/rating' className={location === 'RATING' ? styles.navItemActive : styles.navItem} onClick={() => setLocation('RATING')}>RATING</Link>
+            <Link to='/profile' className={location === 'PROFILE' ? styles.navItemActive : styles.navItem} onClick={() => setLocation('PROFILE')}>PROFILE</Link>
           </div>
         </div>
         <div className={styles.flagbox}>
-          <input className={styles.input} onChange={(e) => setFlag(e.target.value)} value={flag} placeholder='Flag: polyCTF{}' type="text" />
+          <input className={styles.input} onChange={(e) => setFlag(e.target.value)} value={flag} placeholder='Flag: PolyCTF{}' type="text" />
           <input className={styles.button} onClick={userCheckFlag} type="submit" value="TRY" />
         </div>
-        <div className={styles.right}>
-          <img className={styles.icon} src={userImage} alt="" />
+        <Link to='/profile' className={styles.right}>
+          <img className={styles.icon} src={image} alt="" />
           <div className={styles.username}>{username}</div>
-        </div>
+        </Link>
       </div>
     </div>
   )
 }
 
-export default React.memo(MHeader);
+export default MHeader;

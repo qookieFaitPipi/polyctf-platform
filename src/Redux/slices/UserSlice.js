@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  userLogin: undefined,
+  username: undefined,
   accessToken: undefined,
-  isEntered: false
+  image: undefined,
 }
 
 export const UserSlice = createSlice({
@@ -13,17 +13,19 @@ export const UserSlice = createSlice({
     login: (state, action) => {
       state.userLogin = action.payload.userLogin;
       state.accessToken = action.payload.accessToken;
-      state.isEntered = true;
       document.cookie = "token=" + action.payload.accessToken;
     },
     logout: (state) => {
       state.userLogin = null;
-      state.isEntered = false;
       document.cookie = "token=";
     },
+    setUserInfo: (state, action) => {
+      state.username = action.payload.username;
+      state.image = action.payload.image;
+    }
   },
 })
 
-export const { login, logout } = UserSlice.actions
+export const { login, logout, setUserInfo } = UserSlice.actions
 
 export default UserSlice.reducer

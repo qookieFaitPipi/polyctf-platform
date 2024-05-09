@@ -33,7 +33,7 @@ const TaskInfo = () => {
       task_id: selectedTaskId
     }
     try {
-      axios.post('https://polyctf.alexavr.ru/api/get_task', userData, config).then((res) => {
+      axios.post('https://hosting.alexavr.ru/api/get_task', userData, config).then((res) => {
         dispatch(selectTask(res.data))
       });
     } catch(err) {
@@ -47,11 +47,11 @@ const TaskInfo = () => {
         <div className={styles.description}>
           <Task id={selectedTaskId} name={selectedTask.task_name} />
           <div className={styles.taskTitle}>DESCRIPTION:</div>
-          <div className={styles.taskText}>{selectedTask.task_description}</div>
+          <div  className={styles.taskText}>{selectedTask.task_description}</div>
           <div className={styles.taskTitle}>DEGREE OF DEFFICULTY:</div>
           <div className={styles.taskText}>{selectedTask.task_level}</div>
           <div className={styles.taskTitle}>LINK:</div>
-          <div className={styles.taskText}>https://youtu.be/xm3YgoEiEDc?si=ZeJrpjMbBkiXka7x</div>
+          <div className={styles.taskText}>{selectedTask.link}</div>
         </div>
           
         <div className={styles.statisics}>
@@ -63,7 +63,7 @@ const TaskInfo = () => {
 
           <div className={styles.statBlock}>
             <div className={styles.title}>FIRST BLOOD</div>
-            <div className={styles.hr}>{selectedTask.task_first_blood_name}</div>
+            <div className={styles.hr}>{selectedTask.task_first_blood_name ? selectedTask.task_first_blood_name : 'None'}</div>
             <div className={styles.text}>33/09/2054</div> 
           </div>
 
