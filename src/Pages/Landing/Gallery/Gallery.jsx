@@ -69,7 +69,7 @@ const Gallery = () => {
           >
             {event ? 
               event.map((obj) => {
-                return <SwiperSlide style={{backgroundImage: `url(${obj.image})`, backgroundSize: 'cover', cursor: 'pointer', border: '2px solid #f2f4f3 !important'}}></SwiperSlide>
+                return <SwiperSlide style={{backgroundImage: `url(${obj.image})`, backgroundSize: 'cover', cursor: 'grab', border: '2px solid #f2f4f3 !important'}}></SwiperSlide>
               })
               :
               ''  

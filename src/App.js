@@ -10,9 +10,12 @@ import Rating from "./Pages/Rating/Rating";
 import Profile from "./Pages/Profile/Profile";
 import TaskBoard from "./Pages/TaskBoard/TaskBoard";
 
+import Liveboard from "./Pages/Liveboard/Liveboard";
+
 // components
 import MHeader from "./Components/MHeader/MHeader";
 import Invisible from "./Components/Invisible/Invisible";
+import RHeader from "./Components/RHeader/RHeader";
 
 function App() {
   return (
@@ -33,10 +36,16 @@ function App() {
         <Invisible />
         <Rating/>
       </>}/>
-      <Route path="/profile" element={<>
+      <Route path="/profile/:username" element={<>
         <MHeader />
         <Invisible />
         <Profile/>
+      </>}/>
+
+      <Route path="/liveboard" element={<>
+        <RHeader />
+        <Invisible />
+        <Liveboard/>
       </>}/>
     </Routes>
   );

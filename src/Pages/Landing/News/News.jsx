@@ -58,7 +58,7 @@ const News = () => {
           className="swiper2"
         >
           {newsList.map((obj) => {
-            return <SwiperSlide onClick={() => viewDetails(obj.title, obj.text, obj.image)} style={{display: 'flex', flexDirection: 'column', width: 'auto'}}>
+            return <SwiperSlide onClick={() => viewDetails(obj.title, obj.text, obj.image)} style={{display: 'flex', flexDirection: 'column', width: 'auto', cursor: 'grab'}}>
               <img className={styles.image} src={obj.image} alt="" />
               <div className={styles.newsTitle}>{obj.title}</div>
               <hr className={styles.hr} />

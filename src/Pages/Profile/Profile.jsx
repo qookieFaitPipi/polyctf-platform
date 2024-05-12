@@ -4,6 +4,9 @@ import styles from './Profile.module.scss';
 // axios
 import axios from 'axios';
 
+// react-router-dom
+import { useParams } from 'react-router-dom';
+
 // hooks
 import { getCookie } from '../../Hooks/getCookie';
  
@@ -18,8 +21,9 @@ import profileBack from './../../Assets/images/background/profileBack.svg';
 
 const Profile = () => {
   const [userParams, setUserParams] = useState({});
-  const [categories, setCategories] = useState([]);
   const [progressList, setProgressList] = useState([]);
+  const params = useParams();
+  //console.log(params.username)
 
   useEffect(() => {
     const headers = {
@@ -28,25 +32,12 @@ const Profile = () => {
     const config = {
       headers: headers
     };
-    try {
-      axios.get("https://hosting.alexavr.ru/api/get_profile", config).then((res) => {
-        setUserParams(res.data);
-      })
-    } catch (err) {
-      console.log(err);
-    }
 
     try {
-      axios.get("https://hosting.alexavr.ru/api/get_categories", config).then((res) => {
-        setCategories(res.data);
-      })
-    } catch (err) {
-      console.log(err);
-    }
-
-    try {
-      axios.get("https://hosting.alexavr.ru/api/get_progress", config).then((res) => {
-        setProgressList(res.data);
+      axios.get(`https://hosting.alexavr.ru/api/get_profile/${params.username}`, config).then((res) => {
+        setUserParams(res.data.profile);
+        setProgressList(res.data.progress);
+        console.log(res.data);
       })
     } catch (err) {
       console.log(err);
@@ -54,10 +45,10 @@ const Profile = () => {
   }, []);
   
   return (
-    <div className={styles.params} style={{backgroundImage: `url(${profileBack})`}}>
+    <section className={styles.params} style={{backgroundImage: `url(${profileBack})`}}>
       <div className={styles.content}>
         <Graph
-          categories={categories}
+          progressList={progressList}
           sumPoints={userParams.user_sum_points}
           placeInRating={userParams.user_place_in_rating}
           countSolvedTasks={userParams.user_count_solved_tasks}
@@ -67,9 +58,12 @@ const Profile = () => {
           <ProgressList progressList={progressList} />
           <Rewards />
         </div>
-        <UserInfo />
+        <UserInfo 
+          username={userParams.user_name}
+          userImage={userParams.user_image}
+        />
       </div>
-    </div>
+    </section>
   )
 }
 

@@ -8,10 +8,10 @@ import { resetNews } from '../../../../Redux/slices/NewsSlice';
 
 const Detail = () => {
   const dispatch = useDispatch();
-  const { title, text, image, detailModalState } = useSelector((state) => state.NewsSlice);
+  const { title, text, image } = useSelector((state) => state.NewsSlice);
 
   return (
-    <div className={detailModalState ? styles.active : styles.disable} onClick={() => dispatch(resetNews())}>
+    <div className={styles.detail} onClick={() => dispatch(resetNews())}>
       <div className={styles.content}>
         <img className={styles.image} src={image} alt="" />
         <div className={styles.title}>

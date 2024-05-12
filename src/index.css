@@ -6,6 +6,10 @@ html, body {
   scrollbar-width: none;
 }
 
+.alert {
+  width: 500px;
+}
+
 .alert-enter {
   opacity: 0;
   transform: scale(0.9);

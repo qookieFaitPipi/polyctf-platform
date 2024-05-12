@@ -4,6 +4,8 @@
   border-radius: 50px;
   cursor: pointer;
   transition: 0.5s;
+  text-decoration: none;
+  color: #111;
 
   .content {
     display: flex;
@@ -20,7 +22,6 @@
 .hr {
   border: 1px rgba(34, 34, 34, 0.2) solid;
   width: 80%;
-  height: 1px;
 }
 
 .hr:nth-child(2) {
@@ -32,7 +33,8 @@
 }
 
 .hr:nth-child(6) {
-  display: none;
+  opacity: 0;
+  margin: 2.5px auto;
 }
 
 .hr:last-child {

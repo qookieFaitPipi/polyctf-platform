@@ -8,7 +8,7 @@ const ProgressList = ({progressList}) => {
   return (
     <div className={styles.progressList}>
       <div className={styles.content}>
-        <div className={styles.title}>Ваш прогресс</div>
+        <div className={styles.title}>YOUR PROGRESS</div>
         <div className={styles.list}>
           {progressList.map((obj) => {
             return <ProgressPoint 

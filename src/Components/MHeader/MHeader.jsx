@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // react-router-dom
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 // hooks
 import { getCookie } from '../../Hooks/getCookie';
@@ -20,11 +20,12 @@ import logo from './../../Assets/images/main-logo.png';
 // redux
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { setUserInfo } from '../../Redux/slices/UserSlice';
+import { setUserInfo, logout } from '../../Redux/slices/UserSlice';
 
 const MHeader = () => {
   const { username, image } = useSelector((state) => state.UserSlice);
-  const [location, setLocation] = useState('CATEGORIES')
+  const [location, setLocation] = useState(window.location.pathname)
+  const [popupState, setPopupState] = useState(false);
 
   const [flag, setFlag] = useState('');
   const notifySuccess = (e) => toast.success(e);
@@ -32,6 +33,7 @@ const MHeader = () => {
   const notifyWarning = (e) => toast.warning(e);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const headers = {
@@ -48,6 +50,7 @@ const MHeader = () => {
     } catch (err) {
       console.log(err);
     }
+  
   }, [])
 
   const userCheckFlag = () => {
@@ -61,10 +64,14 @@ const MHeader = () => {
       flag: flag
     }
 
+    if(flag === '')
+      return;
+
     try {
       axios.post('https://hosting.alexavr.ru/api/check_flag', userData, config).then((res) => {
         if(res.data.is_correct) {
           setFlag('');
+          
           notifySuccess('Flag is correct');
         } else {
           notifyError('Wrong flag');
@@ -74,6 +81,11 @@ const MHeader = () => {
     } catch(err) {
       console.log(err);
     }
+  }
+
+  const userLogout = () => {
+    dispatch(logout())
+    navigate('/');
   }
 
   return (
@@ -89,6 +101,7 @@ const MHeader = () => {
         draggable
         pauseOnHover
         theme="dark"
+        style={{width: '400px'}}
       />
       <div className={styles.content}>
         <div className={styles.left}>
@@ -96,22 +109,31 @@ const MHeader = () => {
         </div>
         <div className={styles.middle}>
           <div className={styles.navBlock}>
-            <Link to='/categories' className={location.split('/').find(path => path === 'CATEGORIES') ? styles.navItemActive : styles.navItem} onClick={() => setLocation('CATEGORIES')}>CATEGORIES</Link>
-            <Link to='/rating' className={location === 'RATING' ? styles.navItemActive : styles.navItem} onClick={() => setLocation('RATING')}>RATING</Link>
-            <Link to='/profile' className={location === 'PROFILE' ? styles.navItemActive : styles.navItem} onClick={() => setLocation('PROFILE')}>PROFILE</Link>
+            <Link to='/categories' className={location.split('/').find(path => path === 'categories') ? styles.navItemActive : styles.navItem} onClick={() => setLocation('/categories')}>CATEGORIES</Link>
+            <Link to='/rating' className={location === '/rating' ? styles.navItemActive : styles.navItem} onClick={() => setLocation('/rating')}>RATING</Link>
+            <Link to={`/profile/${username}`} className={location.split('/').find(path => path === 'profile') ? styles.navItemActive : styles.navItem} onClick={() => setLocation('/profile')}>PROFILE</Link>
           </div>
         </div>
         <div className={styles.flagbox}>
           <input className={styles.input} onChange={(e) => setFlag(e.target.value)} value={flag} placeholder='Flag: PolyCTF{}' type="text" />
           <input className={styles.button} onClick={userCheckFlag} type="submit" value="TRY" />
         </div>
-        <Link to='/profile' className={styles.right}>
+        <div onClick={() => setPopupState(!popupState)} className={styles.right}>
           <img className={styles.icon} src={image} alt="" />
           <div className={styles.username}>{username}</div>
-        </Link>
+
+          {popupState
+            ?
+            <div className={styles.popup}>
+              <input onClick={userLogout} className={styles.popupInput} type="submit" value='LOGOUT' />
+            </div>
+            :
+            <></>
+          }
+        </div>
       </div>
     </div>
   )
 }
 
-export default MHeader;
+export default React.memo(MHeader);

@@ -11,12 +11,10 @@ export const UserSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
-      state.userLogin = action.payload.userLogin;
       state.accessToken = action.payload.accessToken;
       document.cookie = "token=" + action.payload.accessToken;
     },
-    logout: (state) => {
-      state.userLogin = null;
+    logout: () => {
       document.cookie = "token=";
     },
     setUserInfo: (state, action) => {

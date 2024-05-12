@@ -61,6 +61,7 @@
         }
         .navItemActive:hover {
           background-color: rgba(199, 158, 237, 0.9) !important;
+          cursor: pointer;
         }
       }
     }
@@ -108,6 +109,7 @@
       align-items: center;
       margin-right: 40px;
       cursor: pointer;
+      position: relative;
 
       .icon {
         width: 60px;
@@ -121,6 +123,35 @@
         font-weight: 550;
         color: #C79EED;
       }
+
+      .popup {
+        position: absolute;
+        top: 100px;
+        right: 0px;
+        background-color: #222222;
+        padding: 10px 10px 10px 10px;
+        border-radius: 12px;
+        border: 1px rgba(199, 158, 237, 0.5) solid;
+        animation-name: modalopen;
+        animation-duration: 0.2s;
+
+        .popupInput {
+          border-radius: 5px;
+          height: 30px;
+          width: 150px;
+          font-size: 16px;
+          cursor: pointer;
+          border: none;
+          background-color: #C79EED;
+          color: #3B1767;
+          font-weight: 600;
+        }
+      }
     }
   }
+}
+
+@keyframes modalopen {
+  from {opacity: 0}
+  to {opacity: 1}
 }

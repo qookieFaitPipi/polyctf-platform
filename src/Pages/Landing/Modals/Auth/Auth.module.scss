@@ -1,38 +1,25 @@
-.disable {
-  position: absolute;
-  background-color: rgba(52, 58, 64, 0.6);
-  color:#fff;
-  display: none;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.6s;
-  z-index: -1;
-}
-
-.active {
+.auth {
   position: fixed;
   top: 0;
   background-color: rgba(52, 58, 64, 0.6);
   width: 100vw;
   height: 100vh;
   color:#fff;
-  transition: 0.6s;
-  opacity: 1;
   z-index: 4;
+  animation-name: modalopen;
+  animation-duration: 0.2s;
 
   .content {
     display: flex;
     align-items: center;
     flex-direction: column;
     position: fixed;
-    top: 0;
-    pointer-events: all;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     background-color: #222222;
     padding: 50px;
-    border-radius: 10px;
+    border-radius: 12px;
     width: 20%;
 
     box-shadow:
@@ -47,8 +34,13 @@
       font-weight: 550;
     }
 
-    .auth {
+    .tgAuth {
       margin-top: 30px;
     }
   }
+}
+
+@keyframes modalopen {
+  from {opacity: 0}
+  to {opacity: 1}
 }

@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { login } from '../../../../Redux/slices/UserSlice';
 
-const Auth = ({authModalState, setAuthModalState}) => {
+const Auth = ({setAuthModalState}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -32,10 +32,10 @@ const Auth = ({authModalState, setAuthModalState}) => {
   };
 
   return (
-    <div className={authModalState ? styles.active : styles.disable} onClick={() => setAuthModalState(false)}>
+    <div className={styles.auth} onClick={() => setAuthModalState(false)}>
       <div className={styles.content} onClick={e => e.stopPropagation()}>
         <div className={styles.title}>ВХОД</div>
-        <TelegramLoginButton className={styles.auth} dataOnauth={handleTelegramResponse} botName="ZAvrikDinozavrik_bot" />
+        <TelegramLoginButton className={styles.tgAuth} dataOnauth={handleTelegramResponse} botName="ZAvrikDinozavrik_bot" />
       </div>
     </div>
   )

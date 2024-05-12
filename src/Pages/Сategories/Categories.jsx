@@ -42,7 +42,7 @@ const Categories = () => {
     <section className={styles.categories}>
       <div className={styles.list} style={{backgroundImage: `url(${vector})`}}>
         <div className={styles.title}>
-          <div>CHOOSE YOUR</div><br /> <div style={{textDecoration: 'underline', fontSize: '20px', letterSpacing: '1.2px', textAlign: 'center'}}>CATEGORY</div>
+          <div>CHOOSE</div><br /> <div style={{textDecoration: 'underline', fontSize: '20px', letterSpacing: '1.2px', textAlign: 'center'}}>CATEGORY</div>
         </div>
         <div className={styles.content}>
           {categories.map((obj) => {

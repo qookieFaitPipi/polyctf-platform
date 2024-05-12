@@ -8,7 +8,7 @@ const Achieve = () => {
   return (
     <div className={styles.rewards}>
       <div className={styles.content}>
-        <div className={styles.title}>Ваши достижения</div>
+        <div className={styles.title}>YOUR ACHIEVEMENTS</div>
         <div className={styles.list}>
           <Reward />
           <Reward />

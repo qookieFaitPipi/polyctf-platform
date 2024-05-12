@@ -51,7 +51,9 @@ const TaskInfo = () => {
           <div className={styles.taskTitle}>DEGREE OF DEFFICULTY:</div>
           <div className={styles.taskText}>{selectedTask.task_level}</div>
           <div className={styles.taskTitle}>LINK:</div>
-          <div className={styles.taskText}>{selectedTask.link}</div>
+          <div className={styles.taskText}>{selectedTask.task_link}</div>
+          <div className={styles.taskTitle}>AUTHOR:</div>
+          <div className={styles.taskText}>{selectedTask.task_author}</div>
         </div>
           
         <div className={styles.statisics}>
@@ -61,10 +63,10 @@ const TaskInfo = () => {
             <div className={styles.text}>times</div>
           </div>
 
-          <div className={styles.statBlock}>
+          <div className={styles.statBlock} style={{width: '35%'}}>
             <div className={styles.title}>FIRST BLOOD</div>
             <div className={styles.hr}>{selectedTask.task_first_blood_name ? selectedTask.task_first_blood_name : 'None'}</div>
-            <div className={styles.text}>33/09/2054</div> 
+            <div className={styles.text}>{selectedTask.first_blood_datetime}</div> 
           </div>
 
           <div className={styles.statBlock}>

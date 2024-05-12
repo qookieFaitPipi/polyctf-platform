@@ -10,28 +10,25 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Graph = ({categories, sumPoints, placeInRating, countSolvedTasks, userCountFirstBlood}) => {
+const Graph = ({progressList, sumPoints, placeInRating, countSolvedTasks, userCountFirstBlood}) => {
   const namesArray = []
   const datasArray = []
 
-  categories.map(category => {
-    if(category.category_solved_tasks > 0) {
-      namesArray.push(category.category_name);
+  progressList.map(progressList => {
+    if(progressList.category_solved_tasks > 0) {
+      namesArray.push(progressList.category_name);
     }
-  });
-
-  categories.map(category => {
-    datasArray.push(category.category_solved_tasks);
+    datasArray.push(progressList.category_solved_tasks);
   });
 
   const data = {
     labels: namesArray,
     datasets: [
       {
-        label: '# of Votes',
+        label: 'SOLVED TASKS',
         data: datasArray,
         backgroundColor: [
-          'rgba(255, 99, 132, 0.6)',
+          'rgba(255, 99, 132, 0.6)', 
           'rgba(54, 162, 235, 0.6)',
           'rgba(255, 206, 86, 0.6)',
           'rgba(75, 192, 192, 0.6)',

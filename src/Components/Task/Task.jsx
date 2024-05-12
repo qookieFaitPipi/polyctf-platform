@@ -7,7 +7,7 @@ import task_compl from './../../Assets/images/icons/task_comp.svg'
 // redux
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { resetTask, selectTaskId } from '../../Redux/slices/TaskSlice';
+import { selectTaskId } from '../../Redux/slices/TaskSlice';
 
 const Task = ({id, name, solved}) => {
   const dispatch = useDispatch()

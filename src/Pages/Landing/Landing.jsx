@@ -11,8 +11,12 @@ import Footer from './Footer/Footer';
 import Auth from './Modals/Auth/Auth';
 import Detail from './Modals/Detail/Detail';
 
+// redux
+import { useSelector } from 'react-redux';
+
 const Landing = () => {
   const [authModalState, setAuthModalState] = useState(false);
+  const { detailModalState } = useSelector((state) => state.NewsSlice);
 
   return (
     <section style={{backgroundColor: '#f2f4f3'}}>
@@ -24,11 +28,21 @@ const Landing = () => {
       <News />
       <Gallery />
       <Footer />
-      <Auth 
-        authModalState={authModalState}
-        setAuthModalState={setAuthModalState}
-      />
-      <Detail />
+      {authModalState 
+        ? 
+        <Auth 
+          setAuthModalState={setAuthModalState}
+        />
+        :
+        <></>
+      }
+
+      {detailModalState 
+        ?
+        <Detail />
+        :
+        <></>
+      }
     </section>
   )
 }
