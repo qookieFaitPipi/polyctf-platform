@@ -19,11 +19,15 @@ import UserInfo from './UserInfo/UserInfo';
 // images
 import profileBack from './../../Assets/images/background/profileBack.svg';
 
+// redux
+import { useSelector } from 'react-redux';
+
 const Profile = () => {
+  const { needUpdate } = useSelector((state) => state.UserSlice);
+
   const [userParams, setUserParams] = useState({});
   const [progressList, setProgressList] = useState([]);
   const params = useParams();
-  //console.log(params.username)
 
   useEffect(() => {
     const headers = {
@@ -34,15 +38,14 @@ const Profile = () => {
     };
 
     try {
-      axios.get(`https://hosting.alexavr.ru/api/get_profile/${params.username}`, config).then((res) => {
+      axios.get(`https://backend.polyctf.ru/api/get_profile/${params.username}`, config).then((res) => {
         setUserParams(res.data.profile);
         setProgressList(res.data.progress);
-        console.log(res.data);
       })
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [params, needUpdate]);
   
   return (
     <section className={styles.params} style={{backgroundImage: `url(${profileBack})`}}>

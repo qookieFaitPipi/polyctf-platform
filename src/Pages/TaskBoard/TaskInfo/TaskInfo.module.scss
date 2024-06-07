@@ -6,6 +6,15 @@
   padding: 20px;
   height: 500px;
   width: 596px;
+  
+  @media (max-width: 1300px) {
+    order: 1;
+    width: auto;
+    margin-top: 40px;
+    margin-bottom: 140px !important;
+    margin: 40px;
+  }
+
 
   .content {
 

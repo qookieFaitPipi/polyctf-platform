@@ -1,15 +1,23 @@
 
 .gallery {
-  margin-top: 160px;
+  margin-top: 60px;
   background-size: cover;
   padding-bottom: 80px;
-  background-color: #f2f4f3;
+  background-color: rgba(26, 26, 26, 1);
+
+  @media (max-width: 1000px) {
+    padding-bottom: 40px;
+  }
 
   .content {
     display: flex;
     justify-content: space-between;
     width: 80vw;
     margin: auto;
+
+    @media (max-width: 1000px) {
+      flex-direction: column;
+    }
 
     .left {
       text-align: start;
@@ -18,15 +26,31 @@
         font-size: 24px;
         margin-bottom: 30px;
         font-weight: 500;
-        letter-spacing: 3.5px;
+        letter-spacing: 3px;
+        color: #fff;
+
+        @media (max-width: 1000px) {
+          text-align: center;
+        }
       }
 
       .text {
         font-size: 18px;
+        color: #fff;
+
+        @media (max-width: 1000px) {
+          text-align: center;
+        }
       }
 
       .eventsList {
         margin-top: 10px;
+
+        @media (max-width: 1000px) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
 
         .event {
           display: table;
@@ -36,6 +60,8 @@
           padding-bottom: 1px;
           transition: 0.5s;
           list-style-type: none;
+          color: #fff;
+
         }
 
         .event:hover {
@@ -54,6 +80,8 @@
           transition: 0.5s;
           font-size: 20px;
           list-style-type: disc !important;
+          color: #fff;
+
         }
       }
     }

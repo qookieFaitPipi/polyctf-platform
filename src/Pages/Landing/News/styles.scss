@@ -15,15 +15,19 @@
   display: block;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 12px 12px 0px 0px;
 }
 
 .swiper-slide {
   width: auto;
-  border: 1px #ccc solid;
+  border: 1px rgba(204, 204, 204, 0.1) solid;
   border-radius: 12px;
 }
 
+.swiper-pagination-bullet {
+  background-color: #fff;
+}
+
 .swiper-pagination-bullet-active {
-  background-color: #3B1767;
+  background-color: #C79EED;
 }

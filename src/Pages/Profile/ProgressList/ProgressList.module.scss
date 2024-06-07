@@ -20,7 +20,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      scrollbar-width: none;
       overflow-x: hidden;
       overflow-y: auto;
       border: 2px #C79EED solid;
@@ -28,6 +27,10 @@
       padding: 10px;
       scrollbar-width: none;
       max-height: 200px;
+
+      @media (max-width: 1300px) {
+        max-height: 120px;
+      }
     }
   }
 }

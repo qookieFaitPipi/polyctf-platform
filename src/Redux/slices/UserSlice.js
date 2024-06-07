@@ -4,6 +4,7 @@ const initialState = {
   username: undefined,
   accessToken: undefined,
   image: undefined,
+  needUpdate: false,
 }
 
 export const UserSlice = createSlice({
@@ -20,10 +21,13 @@ export const UserSlice = createSlice({
     setUserInfo: (state, action) => {
       state.username = action.payload.username;
       state.image = action.payload.image;
+    },
+    setUpdate: (state, action) => {
+      state.needUpdate = action.payload;
     }
   },
 })
 
-export const { login, logout, setUserInfo } = UserSlice.actions
+export const { login, logout, setUserInfo, setUpdate } = UserSlice.actions
 
 export default UserSlice.reducer

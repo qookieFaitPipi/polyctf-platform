@@ -5,6 +5,11 @@
   height: 500px;
   width: 596px;
 
+  @media (max-width: 1300px) {
+    width: auto;
+    height: 200px;
+  }
+
   .content {
     overflow-y: auto;
     overflow-x: hidden;

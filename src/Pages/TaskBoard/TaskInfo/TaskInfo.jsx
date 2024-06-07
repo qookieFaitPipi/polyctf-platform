@@ -33,7 +33,7 @@ const TaskInfo = () => {
       task_id: selectedTaskId
     }
     try {
-      axios.post('https://hosting.alexavr.ru/api/get_task', userData, config).then((res) => {
+      axios.post('https://backend.polyctf.ru/api/get_task', userData, config).then((res) => {
         dispatch(selectTask(res.data))
       });
     } catch(err) {

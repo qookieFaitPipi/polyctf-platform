@@ -18,8 +18,7 @@
       position: relative;
       color: #fff;
       background-color: rgba(17, 17, 17, 0) !important;
-      line-height: 10px;
-      margin-top: 70px;
+      margin-top: 51px;
       height: 93px;
     }
 
@@ -35,7 +34,11 @@
       width: 100vw;
       margin-top: 20px;
       position: relative;
-      z-index: 4 !important;
+
+      @media (max-width: 1300px) {
+        
+      }
+    
     }
   }
 }

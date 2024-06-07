@@ -2,6 +2,13 @@
   width: 740px;
   height: 520px;
 
+  @media (max-width: 1000px) {
+    height: 250px;
+    width: auto;
+    margin-top: 20px;
+  }
+
+
   .swiper-slide {
     display: flex;
     justify-content: center;

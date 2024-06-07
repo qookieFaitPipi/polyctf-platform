@@ -13,7 +13,12 @@ import Point from './Point/Point';
 // images
 import vector from './../../Assets/images/background/ratingVector.svg';
 
+// redux
+import { useSelector } from 'react-redux';
+
 const Rating = () => {
+  const { needUpdate } = useSelector((state) => state.UserSlice);
+
   const [points, setPoints] = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
@@ -26,13 +31,13 @@ const Rating = () => {
     };
     
     try {
-      axios.get("https://hosting.alexavr.ru/api/get_rating", config).then((res) => {
+      axios.get("https://backend.polyctf.ru/api/get_rating", config).then((res) => {
         setPoints(res.data);
       })
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [needUpdate]);
 
   return (
     <section className={styles.table}>
@@ -43,8 +48,8 @@ const Rating = () => {
         <div className={styles.field}>
           <div className={styles.top}>
             <div className={styles.title}>PLACE</div>
-            <div className={styles.title}>TASKS SOLVED</div>
             <div className={styles.title}>USERNAME</div>
+            <div className={styles.title}>TASKS SOLVED</div>
             <div className={styles.title}>SCORE</div>
           </div>
           <div className={styles.list}>

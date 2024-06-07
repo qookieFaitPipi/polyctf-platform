@@ -21,7 +21,7 @@ const Gallery = () => {
 
   useEffect(() => {
     try {
-      axios.get('https://hosting.alexavr.ru/api/get_events').then((response) => {
+      axios.get('https://backend.polyctf.ru/api/get_events').then((response) => {
         if(response.status === 200) {
           setEventsList(response.data);
         }
@@ -34,7 +34,7 @@ const Gallery = () => {
 
   const getEvent = (id) => {
     try {
-      axios.post('https://hosting.alexavr.ru/api/get_event_photos', {event_id: id}).then((response) => {
+      axios.post('https://backend.polyctf.ru/api/get_event_photos', {event_id: id}).then((response) => {
         if(response.status === 200) {
           setEvent(response.data);
           setCurrentEvent(response.data[0].event_id);
@@ -43,8 +43,6 @@ const Gallery = () => {
     } catch(err) {
       console.log(err);
     }
-
-    console.log(eventsList);
   }
 
   return (
@@ -69,7 +67,7 @@ const Gallery = () => {
           >
             {event ? 
               event.map((obj) => {
-                return <SwiperSlide style={{backgroundImage: `url(${obj.image})`, backgroundSize: 'cover', cursor: 'grab', border: '2px solid #f2f4f3 !important'}}></SwiperSlide>
+                return <SwiperSlide key={obj.image} style={{backgroundImage: `url(${obj.image})`, backgroundSize: 'cover', cursor: 'grab', border: '2px solid #f2f4f3 !important'}}></SwiperSlide>
               })
               :
               ''  

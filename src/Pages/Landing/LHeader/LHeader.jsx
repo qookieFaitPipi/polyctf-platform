@@ -1,10 +1,9 @@
 import React from 'react';
 import styles from './LHeader.module.scss';
 
-import { Link } from 'react-router-dom';
-
 // images
-import logo from './../../../Assets/images/logo.svg';
+import logo from './../../../Assets/images/main-logo.png';
+
 import entryIcon from './../../../Assets/images/icons/entry.svg';
 
 const LHeader = ({authModalState, setAuthModalState}) => {
@@ -16,13 +15,15 @@ const LHeader = ({authModalState, setAuthModalState}) => {
         </div>
         <div className={styles.rightBlock}>
           <div className={styles.navItem} onClick={() => window.scrollTo({ top: document.getElementById('scrollNews').offsetTop - 120, behavior: 'smooth'})}>
-            NEWS
+            НОВОСТИ
           </div>
+
           <div className={styles.navItem} onClick={() => window.scrollTo({ top: document.getElementById('scrollGallery').offsetTop - 120, behavior: 'smooth'})}>
-            GALLERY 
+            ГАЛЕРЕЯ 
           </div>
+
           <div className={styles.navItem} style={{border: 'none'}} onClick={() => window.scrollTo({ top: document.getElementById('scrollContacts').offsetTop - 120, behavior: 'smooth'})}>
-            CONTACTS
+            КОНТАКТЫ
           </div>
           {/*
           <Link to='/liveboard' className={styles.navItem} >
@@ -33,7 +34,6 @@ const LHeader = ({authModalState, setAuthModalState}) => {
             <div className={styles.entry}>
               ВОЙТИ
             </div>
-            <img className={styles.entryIcon} src={entryIcon} alt="entryIcon" />
           </div>
         </div>
       </div>

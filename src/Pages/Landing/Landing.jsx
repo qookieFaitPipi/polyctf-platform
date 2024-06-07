@@ -19,11 +19,12 @@ const Landing = () => {
   const { detailModalState } = useSelector((state) => state.NewsSlice);
 
   return (
-    <section style={{backgroundColor: '#f2f4f3'}}>
+    <section style={{backgroundColor: 'rgba(26, 26, 26, 1)'}}>
       <LHeader 
         authModalState={authModalState}
         setAuthModalState={setAuthModalState}
       />
+      <div style={{height: '106px'}}></div>
       <About />
       <News />
       <Gallery />

@@ -34,6 +34,11 @@
       justify-content: space-between;
       margin-top: 20px;
 
+      @media (max-width: 1300px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
       .left {
         display: flex;
         flex-direction: column;
@@ -44,6 +49,12 @@
         padding: 10px;
         border-radius: 10px;
         width: 55%;
+
+        @media (max-width: 1300px) {
+          text-align: center;
+          width: 100%;
+          margin-bottom: 10px;
+        }
 
         .text {
           color: #111;
@@ -69,10 +80,16 @@
         border-radius: 10px;
         width: 30%;
 
+        @media (max-width: 1300px) {
+          text-align: center;
+          width: 100%;
+        }
+
         .text {
           color: #111;
           font-size: 15px;
           font-weight: 550;
+
         }
 
         .colored {

@@ -1,45 +1,31 @@
 .footer {
   display: flex;
-  
-  background-color: rgba(59, 23, 103, 1);
+  background-color: #222222;
   color: #fff;
-  height: 276px;
 
   .content {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 90vw;
     margin: auto;
+    padding: 30px;
 
-    .left {
-      width: 30%;
-      margin: auto;
-      text-align: center;
-      border-right: 2px #C79EED solid;
 
-      .title {
-        font-size: 24px;
-        font-weight: 600;
-      }
-
-      .links {
-        display: flex;
-        justify-content: center;
-
-        .icon {
-          width: 60px;
-          margin: 10px;
-          cursor: pointer;
-        }
-      }
+    .title {
+      font-size: 24px;
+      font-weight: 600;
     }
 
-    .right {
-      width: 60%;
-      margin: auto;
-      text-align: center;
-      
-      .text {
-        padding: 20px;
+    .links {
+      display: flex;
+      justify-content: center;
+
+      .icon {
+        width: 55px;
+        margin: 10px;
+        cursor: pointer;
       }
     }
   }

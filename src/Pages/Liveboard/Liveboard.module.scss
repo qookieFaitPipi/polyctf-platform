@@ -2,6 +2,7 @@
   position: relative;
   height: calc(100vh - 106px);
   z-index: 3;
+  overflow-y: hidden;
 
   .content {
     display: flex;
@@ -33,7 +34,7 @@
 
       .search::placeholder {
         font-family: "Roboto Condensed", sans-serif;
-        color: #fff;
+        color: #ccc;
       }
     }
 

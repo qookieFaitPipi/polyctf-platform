@@ -18,7 +18,7 @@ const Auth = ({setAuthModalState}) => {
 
   const handleTelegramResponse = (res) => {
     try {
-      axios.post('https://hosting.alexavr.ru/api/login', res).then((response) => {
+      axios.post('https://backend.polyctf.ru/api/login', res).then((response) => {
         if(response.status === 200) {
           dispatch(login({
             accessToken: response.data.access_token,
@@ -35,7 +35,7 @@ const Auth = ({setAuthModalState}) => {
     <div className={styles.auth} onClick={() => setAuthModalState(false)}>
       <div className={styles.content} onClick={e => e.stopPropagation()}>
         <div className={styles.title}>ВХОД</div>
-        <TelegramLoginButton className={styles.tgAuth} dataOnauth={handleTelegramResponse} botName="ZAvrikDinozavrik_bot" />
+        <TelegramLoginButton className={styles.tgAuth} dataOnauth={handleTelegramResponse} botName="polyctf_bot" />
       </div>
     </div>
   )

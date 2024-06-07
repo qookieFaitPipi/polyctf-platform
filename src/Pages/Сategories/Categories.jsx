@@ -14,10 +14,12 @@ import Category from './Category/Category';
 import vector from './../../Assets/images/background/categoryTopVector.svg';
 
 // redux
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { resetTask } from '../../Redux/slices/TaskSlice';
 
 const Categories = () => {
+  const { needUpdate } = useSelector((state) => state.UserSlice);
+
   const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
 
@@ -29,20 +31,20 @@ const Categories = () => {
       headers: headers
     }
     try {
-      axios.get("https://hosting.alexavr.ru/api/get_categories", config).then((res) => {
+      axios.get("https://backend.polyctf.ru/api/get_categories", config).then((res) => {
         setCategories(res.data);
       })
     } catch (err) {
       console.log(err);
     }
     dispatch(resetTask());
-  }, []);
+  }, [dispatch, needUpdate]);
 
   return (
     <section className={styles.categories}>
       <div className={styles.list} style={{backgroundImage: `url(${vector})`}}>
         <div className={styles.title}>
-          <div>CHOOSE</div><br /> <div style={{textDecoration: 'underline', fontSize: '20px', letterSpacing: '1.2px', textAlign: 'center'}}>CATEGORY</div>
+          <div>CHOOSE</div><div style={{textDecoration: 'underline', fontSize: '20px', letterSpacing: '1.2px', textAlign: 'center'}}>CATEGORY</div>
         </div>
         <div className={styles.content}>
           {categories.map((obj) => {

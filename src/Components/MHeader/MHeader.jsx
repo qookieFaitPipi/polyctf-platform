@@ -20,7 +20,7 @@ import logo from './../../Assets/images/main-logo.png';
 // redux
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { setUserInfo, logout } from '../../Redux/slices/UserSlice';
+import { setUserInfo, logout, setUpdate } from '../../Redux/slices/UserSlice';
 
 const MHeader = () => {
   const { username, image } = useSelector((state) => state.UserSlice);
@@ -43,15 +43,17 @@ const MHeader = () => {
       headers: headers
     };
     
-    try {
-      axios.get("https://hosting.alexavr.ru/api/get_user_info", config).then((res) => {
-        dispatch(setUserInfo({username: res.data.username, image: res.data.image}))
-      })
-    } catch (err) {
-      console.log(err);
-    }
+    axios.get("https://backend.polyctf.ru/api/get_user_info", config)
+    .then((res) => {
+      dispatch(setUserInfo({ username: res.data.username, image: res.data.image }));
+    })
+    .catch((err) => {
+      if (err.response.status === 422) {
+        navigate('/');
+      }
+    });
   
-  }, [])
+  }, [dispatch, navigate])
 
   const userCheckFlag = () => {
     const headers = {
@@ -68,14 +70,18 @@ const MHeader = () => {
       return;
 
     try {
-      axios.post('https://hosting.alexavr.ru/api/check_flag', userData, config).then((res) => {
-        if(res.data.is_correct) {
+      axios.post('https://backend.polyctf.ru/api/check_flag', userData, config).then((res) => {
+      if(res.data.is_existed) {
+        setFlag('');
+        notifyWarning("You can't solve this twice. Hmm...");
+        return;
+      }
+      if(res.data.is_correct) {
           setFlag('');
-          
+          dispatch(setUpdate(true));
           notifySuccess('Flag is correct');
         } else {
           notifyError('Wrong flag');
-          //notifyWarning('Таск уже выполнен');
         }
       });
     } catch(err) {
@@ -125,7 +131,10 @@ const MHeader = () => {
           {popupState
             ?
             <div className={styles.popup}>
-              <input onClick={userLogout} className={styles.popupInput} type="submit" value='LOGOUT' />
+              <div className={styles.content} onClick={e => e.stopPropagation()}>
+                <input className={styles.popupSettingsInput} type="submit" value='SETTINGS' />
+                <input onClick={userLogout} className={styles.popupLogoutInput} type="submit" value='LOGOUT' />
+              </div>
             </div>
             :
             <></>

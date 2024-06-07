@@ -27,6 +27,12 @@
     23px 0 20px -23px rgba(0, 0, 0, .8),
     0 0 40px rgba(0, 0, 0, .1) inset;
 
+    @media (max-width: 1000px) {
+      position: relative;
+      width: 80vw;
+      padding: 25px;
+    }
+
     .title {
       color: #C79EED;
       font-size: 26px;
@@ -36,10 +42,17 @@
 
     .image {
       height: 400px;
+      border: 1px #ccc solid;
+      border-radius: 12px;
+
+      @media (max-width: 1000px) {
+        display: none;
+      }
     }
 
     .text {
       margin-top: 10px;
+      text-align: justify;
     }
   }
 }

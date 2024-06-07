@@ -4,7 +4,7 @@ import styles from './News.module.scss';
 // axios
 import axios from 'axios';
 
-import vector from './../../../Assets/images/background/newsVector.svg';
+import vector from './../../../Assets/images/background/newsVector2.svg';
 
 // import required modules
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -22,7 +22,7 @@ const News = () => {
   const [newsList, setNewsList] = useState([]);
   useEffect(() => {
     try {
-      axios.get('https://hosting.alexavr.ru/api/get_news').then((response) => {
+      axios.get('https://backend.polyctf.ru/api/get_news').then((response) => {
         if(response.status === 200) {
           setNewsList(response.data);
         }
@@ -32,7 +32,6 @@ const News = () => {
     }
   }, []);
 
-
   const viewDetails = (title, text, image) => {
     dispatch(selectNews({
       detailModalState: true,
@@ -41,7 +40,6 @@ const News = () => {
       image: image,
     }));
   }
-
 
   return (
     <div className={styles.news} style={{backgroundImage: `url(${vector})`}} id='scrollNews'>
@@ -58,8 +56,12 @@ const News = () => {
           className="swiper2"
         >
           {newsList.map((obj) => {
-            return <SwiperSlide onClick={() => viewDetails(obj.title, obj.text, obj.image)} style={{display: 'flex', flexDirection: 'column', width: 'auto', cursor: 'grab'}}>
-              <img className={styles.image} src={obj.image} alt="" />
+            return <SwiperSlide 
+              key={obj.id} 
+              onClick={() => viewDetails(obj.title, obj.text, obj.image)} 
+              style={{display: 'flex', flexDirection: 'column', width: 'auto', cursor: 'grab', backgroundColor: 'rgba(255, 255, 255, 0.8)'}}
+            >
+              <img className={styles.image} src={obj.image} alt="newsImage" />
               <div className={styles.newsTitle}>{obj.title}</div>
               <hr className={styles.hr} />
             </SwiperSlide>

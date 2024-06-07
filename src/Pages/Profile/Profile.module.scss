@@ -3,6 +3,7 @@
   height: calc(100vh - 106px);
   background: #111;
   background-size: cover;
+  overflow-y: hidden;
 
   .content {
     display: flex;

@@ -17,7 +17,7 @@ const Liveboard = () => {
   useEffect(() => {    
     const fetchData = async () => {
       try {
-        const res = await axios.get("https://hosting.alexavr.ru/api/get_liveboard");
+        const res = await axios.get("https://backend.polyctf.ru/api/get_liveboard");
         setPoints(res.data);
       } catch (err) {
         console.log(err);
@@ -38,8 +38,8 @@ const Liveboard = () => {
         <div className={styles.field}>
           <div className={styles.top}>
             <div className={styles.title}>PLACE</div>
-            <div className={styles.title}>TASKS SOLVED</div>
             <div className={styles.title}>USERNAME</div>
+            <div className={styles.title}>TASKS SOLVED</div>
             <div className={styles.title}>SCORE</div>
           </div>
           <div className={styles.list}>

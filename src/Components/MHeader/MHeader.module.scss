@@ -1,9 +1,9 @@
 .header {
   width: 100%;
   position: fixed;
-  z-index: 2;
   box-shadow: 0px 10px 20px rgba(0,0,0,0.14);
   height: 106px;
+  z-index: 5;
 
   .content {
     display: flex;
@@ -24,13 +24,16 @@
     .middle {
       display: flex;
       align-items: center;
+      margin-left: 15px;
 
       .navBlock {
         display: flex;
         justify-content: space-between;
 
         .navItem {
-          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           padding: 20px;
           border-radius: 10px;
           color: #f2f4f3;
@@ -47,7 +50,9 @@
           cursor: pointer;
         }
         .navItemActive {
-          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           padding: 20px;
           border-radius: 10px;
           color: #fff;
@@ -61,6 +66,7 @@
         }
         .navItemActive:hover {
           background-color: rgba(199, 158, 237, 0.9) !important;
+          transition: 0.5s;
           cursor: pointer;
         }
       }
@@ -69,7 +75,6 @@
     .flagbox {
       display: flex;
       align-items: center;
-      margin-left: 60px;
 
       .input {
         width: 350px;
@@ -80,6 +85,10 @@
         background-color:#a3a3a3;
         font-size: 18px;
         padding-left: 15px;
+
+        @media (max-width: 1300px) {
+          width: 150px;
+        }
       }
 
       .input::placeholder {
@@ -108,6 +117,7 @@
       flex-direction: column;
       align-items: center;
       margin-right: 40px;
+      margin-left: 15px;
       cursor: pointer;
       position: relative;
 
@@ -125,26 +135,59 @@
       }
 
       .popup {
-        position: absolute;
-        top: 100px;
-        right: 0px;
-        background-color: #222222;
-        padding: 10px 10px 10px 10px;
-        border-radius: 12px;
-        border: 1px rgba(199, 158, 237, 0.5) solid;
+        position: fixed;
+        top: 0;
+        background-color: rgba(52, 58, 64, 0.6);
+        width: 200%;
+        height: 100vh;
+        color:#fff;
+        z-index: 42121212121212121212122 !important;
         animation-name: modalopen;
         animation-duration: 0.2s;
 
-        .popupInput {
-          border-radius: 5px;
-          height: 30px;
-          width: 150px;
-          font-size: 16px;
-          cursor: pointer;
-          border: none;
-          background-color: #C79EED;
-          color: #3B1767;
-          font-weight: 600;
+        .content {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          position: fixed;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          background-color: #222222;
+          padding: 50px;
+          border-radius: 12px;
+          z-index: 42121212121212121212122 !important;
+
+          box-shadow:
+          0 1px 4px rgba(0, 0, 0, .3),
+          -23px 0 20px -23px rgba(0, 0, 0, .8),
+          23px 0 20px -23px rgba(0, 0, 0, .8),
+          0 0 40px rgba(0, 0, 0, .1) inset;
+
+          .popupLogoutInput {
+            border-radius: 5px;
+            height: 40px;
+            width: 150px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #E53935;
+            color: #fff;
+            font-weight: 600;
+          }
+
+          .popupSettingsInput {
+            border-radius: 5px;
+            height: 40px;
+            width: 150px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #C79EED;
+            color: #3B1767;
+            font-weight: 600;
+            opacity: 0.5;
+          }
         }
       }
     }
