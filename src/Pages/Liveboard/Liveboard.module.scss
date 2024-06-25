@@ -14,30 +14,6 @@
     //background-color: #f2f4f3;
     background-size: cover;
 
-    .top {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 20px;
-      max-width: 1000px;
-      width: 60%;
-
-      .search {
-        width: 300px;
-        height: 35px;
-        border-radius: 50px;
-        border: none;
-        outline: none;
-        font-size: 16px;
-        padding-left: 10px;
-        background-color: rgba(242, 244, 243, 0.5);
-      }
-
-      .search::placeholder {
-        font-family: "Roboto Condensed", sans-serif;
-        color: #ccc;
-      }
-    }
-
     .field {
       display: flex;
       flex-direction: column;

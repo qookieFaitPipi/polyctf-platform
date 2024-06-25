@@ -55,7 +55,8 @@ const Rating = () => {
           <div className={styles.list}>
             {points.filter((item) => item.user_name.toLowerCase().includes(searchValue.toLowerCase())).map((obj) => {
               return <Point
-                key={obj.user_name}
+                key={obj.user_id}
+                id={obj.user_id}
                 name={obj.user_name} 
                 place={obj.user_place} 
                 sumPoints={obj.user_sum_points} 

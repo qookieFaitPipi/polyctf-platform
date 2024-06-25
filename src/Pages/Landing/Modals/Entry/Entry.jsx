@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './Entry.module.scss';
 
 // axios
@@ -7,11 +7,14 @@ import axios from 'axios';
 // react-router-dom
 import { useNavigate } from 'react-router';
 
+// telegram
+import TelegramLoginButton from 'react-telegram-login';
+
 // redux
 import { useDispatch } from 'react-redux';
 import { login } from '../../../../Redux/slices/UserSlice';
 
-const Entry = ({authModalState, setAuthModalState, setRegModalState}) => {
+const Entry = ({setEntryModalState, setRegisterModalState}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -40,18 +43,33 @@ const Entry = ({authModalState, setAuthModalState, setRegModalState}) => {
     }
   }
 
+  const handleTelegramResponse = (res) => {
+    try {
+      axios.post('https://backend.polyctf.ru/api/login', res).then((response) => {
+        if(response.status === 200) {
+          dispatch(login({
+            accessToken: response.data.access_token,
+          }));
+          navigate('/categories');
+        }
+      });
+    } catch(err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <div className={authModalState ? styles.active : styles.disable} onClick={() => setAuthModalState(false)}>
+    <div className={styles.active} onClick={() => setEntryModalState(false)}>
       <div className={styles.content} onClick={e => e.stopPropagation()}>
         <div className={styles.title}>ВХОД</div>
-        <input className={styles.input} value={userLogin} onChange={(e) => setUserLogin(e.target.value)} placeholder='e-mail' type="text" />
+        <input className={styles.input} value={userLogin} onChange={(e) => setUserLogin(e.target.value)} placeholder='username' type="text" />
         <input className={styles.input} value={userPassword} onChange={(e) => setUserPassword(e.target.value)} placeholder='password' type="text" />
         <button className={styles.button} onClick={userAuth} type="submit">ВОЙТИ</button>
         <div className={styles.subText}>Забыл пароль? <span className={styles.colored}>ВОССТАНОВИТЬ</span></div>
-
         <div className={styles.or}>ИЛИ</div>
-        <input className={styles.button} value='Войти через телегу' type="submit"/>
-        <div className={styles.regLink} onClick={() => {setAuthModalState(true) ; setAuthModalState(false)}}>Еще нет аккаунта?</div>
+
+        <TelegramLoginButton className={styles.tgAuth} dataOnauth={handleTelegramResponse} botName="polyctf_bot" />
+        <div className={styles.regLink} onClick={() => {setRegisterModalState(true) ; setEntryModalState(false)}}>Еще нет аккаунта?</div>
       </div>
     </div>
   )

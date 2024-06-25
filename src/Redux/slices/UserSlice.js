@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
+  userId: undefined,
   username: undefined,
   accessToken: undefined,
   image: undefined,
@@ -12,6 +13,7 @@ export const UserSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
+      state.userId = action.payload.userId;
       state.accessToken = action.payload.accessToken;
       document.cookie = "token=" + action.payload.accessToken;
     },

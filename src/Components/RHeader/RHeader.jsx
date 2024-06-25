@@ -11,11 +11,8 @@ const RHeader = () => {
         <div className={styles.left}>
           <img className={styles.logo} src={logo} width="346px" height="147px" alt="" />          
         </div>
-        <div className={styles.middle}>
-          LIVEBOARD
-        </div>
         <div className={styles.right}>
-          TIME TO THE END: 12h
+          LIVEBOARD
         </div>
       </div>
     </div>

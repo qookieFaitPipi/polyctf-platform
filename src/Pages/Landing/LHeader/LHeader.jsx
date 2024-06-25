@@ -6,7 +6,7 @@ import logo from './../../../Assets/images/main-logo.png';
 
 import entryIcon from './../../../Assets/images/icons/entry.svg';
 
-const LHeader = ({authModalState, setAuthModalState}) => {
+const LHeader = ({entryModalState, setEntryModalState}) => {
   return (
     <div className={styles.header}>
       <div className={styles.content}>
@@ -19,7 +19,7 @@ const LHeader = ({authModalState, setAuthModalState}) => {
           </div>
 
           <div className={styles.navItem} onClick={() => window.scrollTo({ top: document.getElementById('scrollGallery').offsetTop - 120, behavior: 'smooth'})}>
-            ГАЛЕРЕЯ 
+            ГАЛЕРЕЯ
           </div>
 
           <div className={styles.navItem} style={{border: 'none'}} onClick={() => window.scrollTo({ top: document.getElementById('scrollContacts').offsetTop - 120, behavior: 'smooth'})}>
@@ -30,7 +30,7 @@ const LHeader = ({authModalState, setAuthModalState}) => {
             LIVEBOARD
           </Link>
           */}
-          <div className={styles.entryBlock} onClick={() => setAuthModalState(!authModalState)}>
+          <div className={styles.entryBlock} onClick={() => setEntryModalState(!entryModalState)}>
             <div className={styles.entry}>
               ВОЙТИ
             </div>

@@ -35,7 +35,7 @@ const Auth = ({setAuthModalState}) => {
     <div className={styles.auth} onClick={() => setAuthModalState(false)}>
       <div className={styles.content} onClick={e => e.stopPropagation()}>
         <div className={styles.title}>ВХОД</div>
-        <TelegramLoginButton className={styles.tgAuth} dataOnauth={handleTelegramResponse} botName="polyctf_bot" />
+        <TelegramLoginButton className={styles.tgAuth} dataOnauth={handleTelegramResponse} botName="BoardPolyCTF_bot" />
       </div>
     </div>
   )

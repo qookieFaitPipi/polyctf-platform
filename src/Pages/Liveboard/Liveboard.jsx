@@ -25,16 +25,13 @@ const Liveboard = () => {
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 5 * 60 * 1000);
+    const interval = setInterval(fetchData, 1 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <section className={styles.liveboard}> 
       <div className={styles.content} style={{backgroundImage: `url(${vector})`}}>
-        <div className={styles.top}>
-          <input className={styles.search} onChange={(e) => setSearchValue(e.target.value)} value={searchValue} placeholder='Search for login' type="text" />
-        </div>
         <div className={styles.field}>
           <div className={styles.top}>
             <div className={styles.title}>PLACE</div>

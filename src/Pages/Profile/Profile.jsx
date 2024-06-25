@@ -36,7 +36,7 @@ const Profile = () => {
     const config = {
       headers: headers
     };
-
+  
     try {
       axios.get(`https://backend.polyctf.ru/api/get_profile/${params.username}`, config).then((res) => {
         setUserParams(res.data.profile);

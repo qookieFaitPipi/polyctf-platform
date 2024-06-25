@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './MHeader.module.scss';
 
+// jwt-decode
+import { jwtDecode } from 'jwt-decode';
+
 // axios
 import axios from 'axios';
 
@@ -26,6 +29,9 @@ const MHeader = () => {
   const { username, image } = useSelector((state) => state.UserSlice);
   const [location, setLocation] = useState(window.location.pathname)
   const [popupState, setPopupState] = useState(false);
+
+  const decodedToken = jwtDecode(getCookie('token'));
+  const subValue = decodedToken.sub;
 
   const [flag, setFlag] = useState('');
   const notifySuccess = (e) => toast.success(e);
@@ -117,7 +123,7 @@ const MHeader = () => {
           <div className={styles.navBlock}>
             <Link to='/categories' className={location.split('/').find(path => path === 'categories') ? styles.navItemActive : styles.navItem} onClick={() => setLocation('/categories')}>CATEGORIES</Link>
             <Link to='/rating' className={location === '/rating' ? styles.navItemActive : styles.navItem} onClick={() => setLocation('/rating')}>RATING</Link>
-            <Link to={`/profile/${username}`} className={location.split('/').find(path => path === 'profile') ? styles.navItemActive : styles.navItem} onClick={() => setLocation('/profile')}>PROFILE</Link>
+            <Link to={`/profile/${subValue}`} className={location.split('/').find(path => path === 'profile') ? styles.navItemActive : styles.navItem} onClick={() => setLocation('profile')}>PROFILE</Link>
           </div>
         </div>
         <div className={styles.flagbox}>
@@ -125,7 +131,7 @@ const MHeader = () => {
           <input className={styles.button} onClick={userCheckFlag} type="submit" value="TRY" />
         </div>
         <div onClick={() => setPopupState(!popupState)} className={styles.right}>
-          <img className={styles.icon} src={image} alt="" />
+          <img className={styles.icon} src={image} alt="icon" />
           <div className={styles.username}>{username}</div>
 
           {popupState
