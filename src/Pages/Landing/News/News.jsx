@@ -63,7 +63,6 @@ const News = () => {
             >
               <img className={styles.image} src={obj.image} alt="newsImage" />
               <div className={styles.newsTitle}>{obj.title}</div>
-              <hr className={styles.hr} />
             </SwiperSlide>
           })}
         </Swiper>

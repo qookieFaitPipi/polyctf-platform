@@ -16,6 +16,8 @@ import Rewards from './Rewards/Rewards';
 import ProgressList from './ProgressList/ProgressList';
 import UserInfo from './UserInfo/UserInfo';
 
+import NewUsername from './../Modals/NewUsername/NewUsername';
+
 // images
 import profileBack from './../../Assets/images/background/profileBack.svg';
 
@@ -24,6 +26,7 @@ import { useSelector } from 'react-redux';
 
 const Profile = () => {
   const { needUpdate } = useSelector((state) => state.UserSlice);
+  const [newUsernameModalState, setNewUsernameModalState] = useState(false);
 
   const [userParams, setUserParams] = useState({});
   const [progressList, setProgressList] = useState([]);
@@ -38,7 +41,7 @@ const Profile = () => {
     };
   
     try {
-      axios.get(`https://backend.polyctf.ru/api/get_profile/${params.username}`, config).then((res) => {
+      axios.get(`https://backend.polyctf.ru/api/get_profile/${params.id}`, config).then((res) => {
         setUserParams(res.data.profile);
         setProgressList(res.data.progress);
       })
@@ -64,7 +67,19 @@ const Profile = () => {
         <UserInfo 
           username={userParams.user_name}
           userImage={userParams.user_image}
+          setNewUsernameModalState={setNewUsernameModalState}
         />
+
+        {
+        newUsernameModalState
+          ?
+          <NewUsername 
+            newUsernameModalState={newUsernameModalState}
+            setNewUsernameModalState={setNewUsernameModalState}
+          />
+          :
+          <></>
+        }
       </div>
     </section>
   )

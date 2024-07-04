@@ -8,9 +8,9 @@ import Gallery from './Gallery/Gallery'
 import Footer from './Footer/Footer';
 
 // modals
-import Entry from './Modals/Entry/Entry';
-import Register from './Modals/Register/Register';
-import Detail from './Modals/Detail/Detail';
+import Entry from './../Modals/Entry/Entry';
+import Register from './../Modals/Register/Register';
+import Detail from './../Modals/Detail/Detail';
 //import Auth from './Modals/Auth/Auth';
 
 // redux

@@ -26,7 +26,7 @@ import { useSelector } from 'react-redux';
 import { setUserInfo, logout, setUpdate } from '../../Redux/slices/UserSlice';
 
 const MHeader = () => {
-  const { username, image } = useSelector((state) => state.UserSlice);
+  const { username, image, needUpdate } = useSelector((state) => state.UserSlice);
   const [location, setLocation] = useState(window.location.pathname)
   const [popupState, setPopupState] = useState(false);
 
@@ -34,6 +34,7 @@ const MHeader = () => {
   const subValue = decodedToken.sub;
 
   const [flag, setFlag] = useState('');
+  
   const notifySuccess = (e) => toast.success(e);
   const notifyError = (e) => toast.error(e);
   const notifyWarning = (e) => toast.warning(e);
@@ -58,8 +59,7 @@ const MHeader = () => {
         navigate('/');
       }
     });
-  
-  }, [dispatch, navigate])
+  }, [dispatch, navigate, needUpdate])
 
   const userCheckFlag = () => {
     const headers = {

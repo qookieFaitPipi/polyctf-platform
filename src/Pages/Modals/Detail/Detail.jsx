@@ -4,7 +4,7 @@ import styles from './Detail.module.scss';
 // redux
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { resetNews } from '../../../../Redux/slices/NewsSlice';
+import { resetNews } from '../../../Redux/slices/NewsSlice';
 
 const Detail = () => {
   const dispatch = useDispatch();

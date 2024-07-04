@@ -12,7 +12,7 @@ import TelegramLoginButton from 'react-telegram-login';
 
 // redux
 import { useDispatch } from 'react-redux';
-import { login } from '../../../../Redux/slices/UserSlice';
+import { login } from '../../../Redux/slices/UserSlice';
 
 const Entry = ({setEntryModalState, setRegisterModalState}) => {
   const dispatch = useDispatch();
@@ -58,9 +58,14 @@ const Entry = ({setEntryModalState, setRegisterModalState}) => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    userAuth();
+  };
+
   return (
     <div className={styles.active} onClick={() => setEntryModalState(false)}>
-      <div className={styles.content} onClick={e => e.stopPropagation()}>
+      <form className={styles.content} onSubmit={handleSubmit} onClick={e => e.stopPropagation()}>
         <div className={styles.title}>ВХОД</div>
         <input className={styles.input} value={userLogin} onChange={(e) => setUserLogin(e.target.value)} placeholder='username' type="text" />
         <input className={styles.input} value={userPassword} onChange={(e) => setUserPassword(e.target.value)} placeholder='password' type="text" />
@@ -70,7 +75,7 @@ const Entry = ({setEntryModalState, setRegisterModalState}) => {
 
         <TelegramLoginButton className={styles.tgAuth} dataOnauth={handleTelegramResponse} botName="polyctf_bot" />
         <div className={styles.regLink} onClick={() => {setRegisterModalState(true) ; setEntryModalState(false)}}>Еще нет аккаунта?</div>
-      </div>
+      </form>
     </div>
   )
 }

@@ -6,12 +6,15 @@ import axios from 'axios';
 
 // react-router-dom
 import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { login } from '../../../Redux/slices/UserSlice';
 
 const Register = ({setRegisterModalState, setEntryModalState}) => {
   const [userLogin, setUserLogin] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const userRegister = () => {
     const userData = {
@@ -24,6 +27,11 @@ const Register = ({setRegisterModalState, setEntryModalState}) => {
       axios.post('https://backend.polyctf.ru/api/login', userData).then((response) => {
         if(response.status === 200) {
           setRegisterModalState(false);
+          dispatch(login({
+            userLogin: userLogin,
+            accessToken: response.data.access_token,
+            isEntered: true,
+          }));
           navigate('/categories');
         }
         if(response.status === 401) {
@@ -35,17 +43,22 @@ const Register = ({setRegisterModalState, setEntryModalState}) => {
       console.log(err);
     }
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    userRegister();
+  };
   
   return (
     <div className={styles.active} onClick={() => setRegisterModalState(false)}>
-      <div className={styles.content} onClick={e => e.stopPropagation()}>
+      <form className={styles.content} onSubmit={handleSubmit} onClick={e => e.stopPropagation()}>
         <div className={styles.title}>РЕГИСТРАЦИЯ</div>
         <input className={styles.input} value={userLogin} onChange={(e) => setUserLogin(e.target.value)} placeholder='username' type="text" />
-        <input className={styles.input} value={userEmail} onChange={(e) => setUserEmail(e.target.value)} placeholder='email' type="text" />
+        <input className={styles.input} value={userEmail} onChange={(e) => setUserEmail(e.target.value)} placeholder='email' type="email" />
         <input className={styles.input} value={userPassword} onChange={(e) => setUserPassword(e.target.value)} placeholder='password' type="text" />
         <input className={styles.button} tabIndex="1" value='СОЗДАТЬ АККАУНТ' type="submit" onClick={userRegister} />
         <div className={styles.regLink} onClick={() => {setEntryModalState(true) ; setRegisterModalState(false)}}>Уже есть аккаунт?</div>
-      </div>
+      </form>
     </div>
   )
 }

@@ -36,7 +36,7 @@ function App() {
         <div style={{height: '106px'}}></div>
         <Rating/>
       </>}/>
-      <Route path="/profile/:username" element={<>
+      <Route path="/profile/:id" element={<>
         <MHeader />
         <div style={{height: '106px'}}></div>
         <Profile/>
@@ -47,6 +47,7 @@ function App() {
         <div style={{height: '106px'}}></div>
         <Liveboard/>
       </>}/>
+      
       {/* redirect */}
       <Route path="/profile" element={<Navigate to="/" replace />} />
 
