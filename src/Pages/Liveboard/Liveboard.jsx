@@ -5,14 +5,13 @@ import styles from './Liveboard.module.scss';
 import axios from 'axios';
 
 // components
-import Point from '../Rating/Point/Point';
+import Point from '../../Components/Point/Point';
 
 // images
 import vector from './../../Assets/images/background/ratingVector.svg';
 
 const Liveboard = () => {
   const [points, setPoints] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {    
     const fetchData = async () => {
@@ -40,14 +39,13 @@ const Liveboard = () => {
             <div className={styles.title}>SCORE</div>
           </div>
           <div className={styles.list}>
-            {points.filter((item) => item.user_name.toLowerCase().includes(searchValue.toLowerCase())).map((obj) => {
+            {points.map((obj) => {
               return <Point 
                 key={obj.user_name}
                 name={obj.user_name} 
                 place={obj.user_place} 
                 sumPoints={obj.user_sum_points} 
                 countSolvedTasks={obj.user_count_solved_tasks} 
-                searchValue={searchValue}
               />
             })}
           </div>

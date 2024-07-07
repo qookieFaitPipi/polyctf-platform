@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styles from './MHeader.module.scss';
 
-// jwt-decode
-import { jwtDecode } from 'jwt-decode';
+import Cookies from 'js-cookie';
 
 // axios
 import axios from 'axios';
+
+// jwt-decode
+import { jwtDecode } from 'jwt-decode';
 
 // react-toastify
 import { ToastContainer, toast } from 'react-toastify';
@@ -21,12 +23,16 @@ import { getCookie } from '../../Hooks/getCookie';
 import logo from './../../Assets/images/main-logo.png';
 
 // redux
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { setUserInfo, logout, setUpdate } from '../../Redux/slices/UserSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUpdateState } from '../../Redux/slices/UpdateSlice';
 
 const MHeader = () => {
-  const { username, image, needUpdate } = useSelector((state) => state.UserSlice);
+  const { updateState } = useSelector((state) => state.UpdateSlice);
+  const dispatch = useDispatch();
+  
+  const [username, setUsername] = useState('');
+  const [userImage, setUserImage] = useState('');
+
   const [location, setLocation] = useState(window.location.pathname)
   const [popupState, setPopupState] = useState(false);
 
@@ -39,10 +45,11 @@ const MHeader = () => {
   const notifyError = (e) => toast.error(e);
   const notifyWarning = (e) => toast.warning(e);
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
+    dispatch(setUpdateState(false));
+    
     const headers = {
       Authorization: `Bearer ${getCookie('token')}`
     }
@@ -52,14 +59,15 @@ const MHeader = () => {
     
     axios.get("https://backend.polyctf.ru/api/get_user_info", config)
     .then((res) => {
-      dispatch(setUserInfo({ username: res.data.username, image: res.data.image }));
+      setUsername(res.data.username);
+      setUserImage(res.data.image);
     })
     .catch((err) => {
       if (err.response.status === 422) {
         navigate('/');
       }
     });
-  }, [dispatch, navigate, needUpdate])
+  }, [dispatch, navigate, updateState])
 
   const userCheckFlag = () => {
     const headers = {
@@ -84,8 +92,8 @@ const MHeader = () => {
       }
       if(res.data.is_correct) {
           setFlag('');
-          dispatch(setUpdate(true));
           notifySuccess('Flag is correct');
+          dispatch(setUpdateState(true));
         } else {
           notifyError('Wrong flag');
         }
@@ -96,7 +104,7 @@ const MHeader = () => {
   }
 
   const userLogout = () => {
-    dispatch(logout())
+    Cookies.remove('token');
     navigate('/');
   }
 
@@ -131,7 +139,7 @@ const MHeader = () => {
           <input className={styles.button} onClick={userCheckFlag} type="submit" value="TRY" />
         </div>
         <div onClick={() => setPopupState(!popupState)} className={styles.right}>
-          <img className={styles.icon} src={image} alt="icon" />
+          <img className={styles.icon} src={userImage} alt="icon" />
           <div className={styles.username}>{username}</div>
 
           {popupState

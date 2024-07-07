@@ -8,17 +8,12 @@ import axios from 'axios';
 import { getCookie } from '../../Hooks/getCookie';
 
 // components
-import Point from './Point/Point';
+import Point from '../../Components/Point/Point';
 
 // images
 import vector from './../../Assets/images/background/ratingVector.svg';
 
-// redux
-import { useSelector } from 'react-redux';
-
 const Rating = () => {
-  const { needUpdate } = useSelector((state) => state.UserSlice);
-
   const [points, setPoints] = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
@@ -37,7 +32,7 @@ const Rating = () => {
     } catch (err) {
       console.log(err);
     }
-  }, [needUpdate]);
+  }, []);
 
   return (
     <section className={styles.table}>

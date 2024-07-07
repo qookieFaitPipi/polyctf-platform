@@ -39,7 +39,7 @@ const TaskInfo = () => {
     } catch(err) {
       console.log(err);
     }
-  }, [selectedTaskId])
+  }, [dispatch, selectedTask, selectedTaskId])
 
   return (
     <div className={styles.taskInfo}>

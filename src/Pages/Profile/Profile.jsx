@@ -21,16 +21,21 @@ import NewUsername from './../Modals/NewUsername/NewUsername';
 // images
 import profileBack from './../../Assets/images/background/profileBack.svg';
 
+
 // redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUpdateState } from '../../Redux/slices/UpdateSlice';
 
 const Profile = () => {
-  const { needUpdate } = useSelector((state) => state.UserSlice);
+  const { updateState } = useSelector((state) => state.UpdateSlice);
+  const dispatch = useDispatch();
+
   const [newUsernameModalState, setNewUsernameModalState] = useState(false);
 
   const [userParams, setUserParams] = useState({});
   const [progressList, setProgressList] = useState([]);
   const params = useParams();
+
 
   useEffect(() => {
     const headers = {
@@ -48,7 +53,8 @@ const Profile = () => {
     } catch (err) {
       console.log(err);
     }
-  }, [params, needUpdate]);
+
+  }, [ params, updateState]);
   
   return (
     <section className={styles.params} style={{backgroundImage: `url(${profileBack})`}}>
@@ -65,6 +71,7 @@ const Profile = () => {
           <Rewards />
         </div>
         <UserInfo 
+          userId={params.id}
           username={userParams.user_name}
           userImage={userParams.user_image}
           setNewUsernameModalState={setNewUsernameModalState}

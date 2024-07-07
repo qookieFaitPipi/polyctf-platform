@@ -4,8 +4,6 @@ import styles from './LHeader.module.scss';
 // images
 import logo from './../../../Assets/images/main-logo.png';
 
-import entryIcon from './../../../Assets/images/icons/entry.svg';
-
 const LHeader = ({entryModalState, setEntryModalState}) => {
   return (
     <div className={styles.header}>

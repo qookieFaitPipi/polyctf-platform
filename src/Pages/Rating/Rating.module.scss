@@ -72,6 +72,9 @@
         overflow-x: hidden;
         scrollbar-width: none;
       }
+      .list > * {
+        /* стили для всех дочерних элементов блока .list */
+      }
 
       .list::-webkit-scrollbar {
         width: 1px;

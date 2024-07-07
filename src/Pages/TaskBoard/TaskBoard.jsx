@@ -26,7 +26,6 @@ import categoryBack from './../../Assets/images/background/categoryBack.svg';
 
 const TaskBoard = () => {
   const { selectedTaskId } = useSelector((state) => state.TaskSlice);
-  const { needUpdate } = useSelector((state) => state.UserSlice);
 
   const [tasks, setTasks] = useState([]);
   const params = useParams();
@@ -49,7 +48,7 @@ const TaskBoard = () => {
       console.log(err);
     }
 
-  }, [params, needUpdate]);
+  }, [params]);
 
   
   return ( 

@@ -1,16 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import styles from './Point.module.scss';
 
 // react-router-dom
 import { Link } from 'react-router-dom';
 
 const Point = ({id, name, place, sumPoints, countSolvedTasks, isMe, searchValue}) => {
-  const [location, setLocation] = useState(window.location.pathname);
-  const ref = useRef();
+  const [location] = useState(window.location.pathname);
 
   return (
     <>
-      <Link to={location === '/liveboard' ? '/liveboard' : `/profile/${id}`} ref={ref} className={styles.point} style={searchValue === '' ? {} : {backgroundColor: 'transparent'}} >
+      <Link to={location === '/liveboard' ? '/liveboard' : `/profile/${id}`} className={styles.point} style={searchValue === '' ? {} : {backgroundColor: 'transparent'}} >
         <div className={styles.content}>
           <div className={styles.text} style={isMe ? {color: '#3b1767'} : {}}>{place}</div>
           <div className={styles.text} style={isMe ? {color: '#3b1767'} : {}}>{name}</div>

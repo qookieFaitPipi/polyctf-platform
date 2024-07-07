@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './NewUsername.module.scss';
 
 // axios
@@ -8,17 +8,18 @@ import axios from 'axios';
 import { getCookie } from '../../../Hooks/getCookie';
 
 // react-toastify
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // redux
 import { useDispatch } from 'react-redux';
-import { setUpdate } from '../../../Redux/slices/UserSlice';
+import { setUpdateState } from '../../../Redux/slices/UpdateSlice';
 
 const NewUsername = ({newUsernameModalState, setNewUsernameModalState}) => {
   const [newUsername, setNewUsername] = useState('');
   const notifySuccess = (e) => toast.success(e);
   const notifyError = (e) => toast.error(e);
+
   const dispatch = useDispatch();
 
   const sendNewUsername = () => {
@@ -37,7 +38,7 @@ const NewUsername = ({newUsernameModalState, setNewUsernameModalState}) => {
       if(res.status === 200) {
         setNewUsernameModalState(false);
         notifySuccess('Username successfully changed');
-        dispatch(setUpdate(true));
+        dispatch(setUpdateState(true));
       } else {
         notifyError('Username change error');
       }

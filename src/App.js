@@ -50,7 +50,6 @@ function App() {
       
       {/* redirect */}
       <Route path="/profile" element={<Navigate to="/" replace />} />
-
     </Routes>
   );
 }

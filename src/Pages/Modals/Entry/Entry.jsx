@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styles from './Entry.module.scss';
 
+import Cookies from 'js-cookie';
+
 // axios
 import axios from 'axios';
 
@@ -10,12 +12,7 @@ import { useNavigate } from 'react-router';
 // telegram
 import TelegramLoginButton from 'react-telegram-login';
 
-// redux
-import { useDispatch } from 'react-redux';
-import { login } from '../../../Redux/slices/UserSlice';
-
 const Entry = ({setEntryModalState, setRegisterModalState}) => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [userLogin, setUserLogin] = useState('');
@@ -30,11 +27,7 @@ const Entry = ({setEntryModalState, setRegisterModalState}) => {
     try {
       axios.post('https://backend.polyctf.ru/api/login', userData).then((response) => {
         if(response.status === 200) {
-          dispatch(login({
-            userLogin: userLogin,
-            accessToken: response.data.access_token,
-            isEntered: true,
-          }));
+          Cookies.set('token', response.data.access_token, { expires: 1 });
           navigate('/categories');
         }
       });
@@ -44,12 +37,12 @@ const Entry = ({setEntryModalState, setRegisterModalState}) => {
   }
 
   const handleTelegramResponse = (res) => {
+    Cookies.remove('token');
+
     try {
       axios.post('https://backend.polyctf.ru/api/login', res).then((response) => {
         if(response.status === 200) {
-          dispatch(login({
-            accessToken: response.data.access_token,
-          }));
+          Cookies.set('token', response.data.access_token, { expires: 1 });
           navigate('/categories');
         }
       });

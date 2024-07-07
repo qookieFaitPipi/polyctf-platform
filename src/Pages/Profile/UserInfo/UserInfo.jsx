@@ -1,25 +1,34 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './UserInfo.module.scss';
 
 // axios
 import axios from 'axios';
 
+// jwt-decode
+import { jwtDecode } from 'jwt-decode';
+
 // hook
 import { getCookie } from '../../../Hooks/getCookie';
 
 // react-toastify
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // redux
-import { useDispatch } from 'react-redux';
-import { setUpdate } from '../../../Redux/slices/UserSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUpdateState } from '../../../Redux/slices/UpdateSlice';
 
+const UserInfo = ({userId, username, userImage, setNewUsernameModalState}) => {
+  const { updateState } = useSelector((state) => state.UpdateSlice);
+  const dispatch = useDispatch();
 
-const UserInfo = ({username, userImage, setNewUsernameModalState}) => {
   const notifySuccess = (e) => toast.success(e);
   const notifyError = (e) => toast.error(e);
-  const dispatch = useDispatch();
+
+  const decodedToken = jwtDecode(getCookie('token'));
+  const subValue = decodedToken.sub;
+
+  console.log(updateState)
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -49,7 +58,9 @@ const UserInfo = ({username, userImage, setNewUsernameModalState}) => {
 
       if (response.status === 200) {
         notifySuccess('Avatar successfully uploaded');
-        dispatch(setUpdate(true));
+        dispatch(setUpdateState(true));
+        dispatch(setUpdateState(true));
+
       } else {
         notifyError('Avatar upload error');
       }
@@ -58,6 +69,12 @@ const UserInfo = ({username, userImage, setNewUsernameModalState}) => {
       notifyError('Avatar upload error');
     }
   };
+
+  const editUsername = () => {
+    if(userId == subValue) {
+      setNewUsernameModalState(true);
+    }
+  }
 
   return (
     <div className={styles.user}>
@@ -68,6 +85,7 @@ const UserInfo = ({username, userImage, setNewUsernameModalState}) => {
           style={{ display: 'none' }}
           id="avatarInput"
           onChange={handleImageChange}
+          disabled={userId != subValue ? true : false}
         />
         <label htmlFor="avatarInput" style={{ cursor: 'pointer' }} className={styles.label}>
           <img
@@ -76,7 +94,7 @@ const UserInfo = ({username, userImage, setNewUsernameModalState}) => {
             className={styles.icon}
           />
         </label>
-        <div className={styles.username} onClick={() => setNewUsernameModalState(true)}>{username}</div>
+        <div className={styles.username} onClick={editUsername}>{username}</div>
         <div className={styles.contacts}>
           <div className={styles.left}>
             <div className={styles.text}>MY CONTACTS</div>

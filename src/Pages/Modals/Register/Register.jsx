@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import styles from './Register.module.scss';
 
+import Cookies from 'js-cookie';
+
 // axios
 import axios from 'axios';
 
 // react-router-dom
 import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
-import { login } from '../../../Redux/slices/UserSlice';
 
 const Register = ({setRegisterModalState, setEntryModalState}) => {
   const [userLogin, setUserLogin] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const userRegister = () => {
     const userData = {
@@ -27,11 +26,8 @@ const Register = ({setRegisterModalState, setEntryModalState}) => {
       axios.post('https://backend.polyctf.ru/api/login', userData).then((response) => {
         if(response.status === 200) {
           setRegisterModalState(false);
-          dispatch(login({
-            userLogin: userLogin,
-            accessToken: response.data.access_token,
-            isEntered: true,
-          }));
+
+          Cookies.set('token', response.data.access_tokenalue, { expires: 1 });
           navigate('/categories');
         }
         if(response.status === 401) {

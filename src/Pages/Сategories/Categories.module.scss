@@ -10,7 +10,9 @@
     background-size: cover;
     background-color: #111;
     height: calc(100vh - 106px);
-
+    overflow-y: auto;
+    overflow-x: hidden;
+    
     .title {
       display: flex;
       flex-direction: column;
@@ -20,6 +22,7 @@
       background-color: rgba(17, 17, 17, 0) !important;
       margin-top: 51px;
       height: 93px;
+      width: 100%;
     }
 
     .content {
@@ -27,8 +30,6 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      overflow-y: auto;
-      overflow-x: hidden;
       scrollbar-width: none;
       margin: 0 auto;
       width: 100vw;
