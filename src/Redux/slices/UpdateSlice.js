@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  updateState: false
+  updateState: undefined
 }
 
 export const UpdateSlice = createSlice({

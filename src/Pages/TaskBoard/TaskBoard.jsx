@@ -18,14 +18,18 @@ import TaskInfo from './TaskInfo/TaskInfo';
 import TaskList from './TaskList/TaskList';
 
 // redux
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // images
 import arrow from './../../Assets/images/icons/arrow.svg';
 import categoryBack from './../../Assets/images/background/categoryBack.svg';
+import { setUpdateState } from '../../Redux/slices/UpdateSlice';
 
 const TaskBoard = () => {
   const { selectedTaskId } = useSelector((state) => state.TaskSlice);
+  const { updateState } = useSelector((state) => state.UpdateSlice);
+
+  const dispatch = useDispatch();
 
   const [tasks, setTasks] = useState([]);
   const params = useParams();
@@ -43,12 +47,14 @@ const TaskBoard = () => {
     try {
       axios.post('https://backend.polyctf.ru/api/get_tasks', userData, config).then((res) => {
         setTasks(res.data);
+        dispatch(setUpdateState(false));
+
       });
     } catch(err) {
       console.log(err);
     }
 
-  }, [params]);
+  }, [params, updateState]);
 
   
   return ( 

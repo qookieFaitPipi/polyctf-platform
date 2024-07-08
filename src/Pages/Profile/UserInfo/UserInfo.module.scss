@@ -18,11 +18,18 @@
 
     .label {
       display: flex;
+      position: relative;
       justify-content: center;
+      align-items: center;
+      width: 90%;
 
       .icon {
-        border-radius: 12px;
-        width: 85%;
+        width: inherit;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 22px;
+        aspect-ratio: 1 / 1;
       }
     }
 

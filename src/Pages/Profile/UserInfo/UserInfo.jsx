@@ -28,13 +28,12 @@ const UserInfo = ({userId, username, userImage, setNewUsernameModalState}) => {
   const decodedToken = jwtDecode(getCookie('token'));
   const subValue = decodedToken.sub;
 
-  console.log(updateState)
-
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
+        dispatch(setUpdateState(true));
         uploadImage(file);
       };
       reader.readAsDataURL(file);
@@ -58,9 +57,6 @@ const UserInfo = ({userId, username, userImage, setNewUsernameModalState}) => {
 
       if (response.status === 200) {
         notifySuccess('Avatar successfully uploaded');
-        dispatch(setUpdateState(true));
-        dispatch(setUpdateState(true));
-
       } else {
         notifyError('Avatar upload error');
       }
@@ -76,6 +72,8 @@ const UserInfo = ({userId, username, userImage, setNewUsernameModalState}) => {
     }
   }
 
+  console.log(userImage)
+
   return (
     <div className={styles.user}>
       <div className={styles.content}>
@@ -88,11 +86,7 @@ const UserInfo = ({userId, username, userImage, setNewUsernameModalState}) => {
           disabled={userId != subValue ? true : false}
         />
         <label htmlFor="avatarInput" style={{ cursor: 'pointer' }} className={styles.label}>
-          <img
-            src={userImage || 'https://via.placeholder.com/150'}
-            alt="Avatar"
-            className={styles.icon}
-          />
+          <div className={styles.icon} style={userImage ? {backgroundImage: `url('${userImage}')`} : {backgroundImage: `url('https://via.placeholder.com/150')`}}></div>
         </label>
         <div className={styles.username} onClick={editUsername}>{username}</div>
         <div className={styles.contacts}>

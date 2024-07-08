@@ -119,11 +119,14 @@
       margin-left: 15px;
       cursor: pointer;
       position: relative;
+      object-fit: cover;
 
       .icon {
         width: 60px;
         height: 60px;
         border-radius: 50%;
+        background-position: center;
+        background-size: cover;
       }
 
       .username {

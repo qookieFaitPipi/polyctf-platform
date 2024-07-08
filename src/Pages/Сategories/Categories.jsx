@@ -14,10 +14,13 @@ import Category from './Category/Category';
 import vector from './../../Assets/images/background/categoryTopVector.svg';
 
 // redux
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { resetTask } from '../../Redux/slices/TaskSlice';
+import { setUpdateState } from '../../Redux/slices/UpdateSlice';
 
 const Categories = () => {
+  const { updateState } = useSelector((state) => state.UpdateSlice);
+
   const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
 
@@ -31,12 +34,13 @@ const Categories = () => {
     try {
       axios.get("https://backend.polyctf.ru/api/get_categories", config).then((res) => {
         setCategories(res.data);
+        dispatch(setUpdateState(false));
       })
     } catch (err) {
       console.log(err);
     }
     dispatch(resetTask());
-  }, [dispatch]);
+  }, [dispatch, updateState]);
 
   return (
     <section className={styles.categories}>

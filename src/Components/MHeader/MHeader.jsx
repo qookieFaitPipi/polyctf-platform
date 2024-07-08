@@ -48,8 +48,6 @@ const MHeader = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(setUpdateState(false));
-    
     const headers = {
       Authorization: `Bearer ${getCookie('token')}`
     }
@@ -61,13 +59,14 @@ const MHeader = () => {
     .then((res) => {
       setUsername(res.data.username);
       setUserImage(res.data.image);
+      dispatch(setUpdateState(false));
     })
     .catch((err) => {
       if (err.response.status === 422) {
         navigate('/');
       }
     });
-  }, [dispatch, navigate, updateState])
+  }, [ dispatch, navigate, updateState])
 
   const userCheckFlag = () => {
     const headers = {
@@ -112,14 +111,11 @@ const MHeader = () => {
     <div className={styles.header}> 
       <ToastContainer 
         position="top-center"
-        autoClose={4000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
         theme="dark"
         style={{width: '400px'}}
       />
@@ -139,7 +135,7 @@ const MHeader = () => {
           <input className={styles.button} onClick={userCheckFlag} type="submit" value="TRY" />
         </div>
         <div onClick={() => setPopupState(!popupState)} className={styles.right}>
-          <img className={styles.icon} src={userImage} alt="icon" />
+          <div className={styles.icon} style={{backgroundImage: `url(${userImage})`}} src={userImage} alt="icon" ></div>
           <div className={styles.username}>{username}</div>
 
           {popupState

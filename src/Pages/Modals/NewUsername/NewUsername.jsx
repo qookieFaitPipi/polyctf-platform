@@ -23,6 +23,9 @@ const NewUsername = ({newUsernameModalState, setNewUsernameModalState}) => {
   const dispatch = useDispatch();
 
   const sendNewUsername = () => {
+    if(newUsername.trim() === '') {
+      return;
+    }
     const headers = {
       Authorization: `Bearer ${getCookie('token')}`
     };

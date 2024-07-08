@@ -36,6 +36,7 @@ const Profile = () => {
   const [progressList, setProgressList] = useState([]);
   const params = useParams();
 
+  const [render, setRender] = useState(false);
 
   useEffect(() => {
     const headers = {
@@ -49,12 +50,12 @@ const Profile = () => {
       axios.get(`https://backend.polyctf.ru/api/get_profile/${params.id}`, config).then((res) => {
         setUserParams(res.data.profile);
         setProgressList(res.data.progress);
+        dispatch(setUpdateState(false));
       })
     } catch (err) {
       console.log(err);
     }
-
-  }, [ params, updateState]);
+  }, [ dispatch, params, updateState]);
   
   return (
     <section className={styles.params} style={{backgroundImage: `url(${profileBack})`}}>
