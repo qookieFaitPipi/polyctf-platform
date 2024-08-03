@@ -72,8 +72,6 @@ const UserInfo = ({userId, username, userImage, setNewUsernameModalState}) => {
     }
   }
 
-  console.log(userImage)
-
   return (
     <div className={styles.user}>
       <div className={styles.content}>

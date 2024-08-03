@@ -10,7 +10,7 @@ import Footer from './Footer/Footer';
 // modals
 import Entry from './../Modals/Entry/Entry';
 import Register from './../Modals/Register/Register';
-import Detail from './../Modals/Detail/Detail';
+import NewsDetail from './../Modals/NewsDetail/NewsDetail';
 //import Auth from './Modals/Auth/Auth';
 
 // redux
@@ -20,6 +20,7 @@ const Landing = () => {
   //const [authModalState, setAuthModalState] = useState(false);
   const [entryModalState, setEntryModalState] = useState(false);
   const [registerModalState, setRegisterModalState] = useState(false);
+
   const { detailModalState } = useSelector((state) => state.NewsSlice);
 
   return (
@@ -67,7 +68,7 @@ const Landing = () => {
 
       {detailModalState 
         ?
-        <Detail />
+        <NewsDetail />
         :
         <></>
       }

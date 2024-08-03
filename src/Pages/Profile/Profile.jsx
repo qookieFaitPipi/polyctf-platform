@@ -36,8 +36,6 @@ const Profile = () => {
   const [progressList, setProgressList] = useState([]);
   const params = useParams();
 
-  const [render, setRender] = useState(false);
-
   useEffect(() => {
     const headers = {
       Authorization: `Bearer ${getCookie('token')}`

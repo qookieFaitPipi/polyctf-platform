@@ -12,6 +12,8 @@ import TaskBoard from "./Pages/TaskBoard/TaskBoard";
 
 import Liveboard from "./Pages/Liveboard/Liveboard";
 
+import NotFound from "./Pages/NotFound/NotFound";
+
 // components
 import MHeader from "./Components/MHeader/MHeader";
 import RHeader from "./Components/RHeader/RHeader";
@@ -47,9 +49,8 @@ function App() {
         <div style={{height: '106px'}}></div>
         <Liveboard/>
       </>}/>
-      
-      {/* redirect */}
-      <Route path="/profile" element={<Navigate to="/" replace />} />
+            
+      <Route path="/*" element={<NotFound />} />
     </Routes>
   );
 }
