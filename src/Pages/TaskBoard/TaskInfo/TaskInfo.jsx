@@ -34,25 +34,25 @@ const TaskInfo = () => {
     }
     try {
       axios.post('https://backend.polyctf.ru/api/get_task', userData, config).then((res) => {
-        dispatch(selectTask(res.data))
+        dispatch(selectTask(res.data));
       });
     } catch(err) {
       console.log(err);
     }
-  }, [dispatch, selectedTask, selectedTaskId])
+  }, [dispatch, selectedTaskId])
 
   return (
     <div className={styles.taskInfo}>
       <div className={styles.content}>
         <div className={styles.description}>
           <Task id={selectedTaskId} name={selectedTask.task_name} />
-          <div className={styles.taskTitle}>DESCRIPTION:</div>
+          <div className={styles.taskTitle}>DESCRIPTION</div>
           <div  className={styles.taskText}>{selectedTask.task_description}</div>
-          <div className={styles.taskTitle}>DEGREE OF DEFFICULTY:</div>
+          <div className={styles.taskTitle}>DEGREE OF DEFFICULTY</div>
           <div className={styles.taskText}>{selectedTask.task_level}</div>
-          <div className={styles.taskTitle}>LINK:</div>
+          <div className={styles.taskTitle}>LINK</div>
           <div className={styles.taskText}>{selectedTask.task_link}</div>
-          <div className={styles.taskTitle}>AUTHOR:</div>
+          <div className={styles.taskTitle}>AUTHOR</div>
           <div className={styles.taskText}>{selectedTask.task_author}</div>
         </div>
           

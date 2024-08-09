@@ -48,7 +48,6 @@ const TaskBoard = () => {
       axios.post('https://backend.polyctf.ru/api/get_tasks', userData, config).then((res) => {
         setTasks(res.data);
         dispatch(setUpdateState(false));
-
       });
     } catch(err) {
       console.log(err);

@@ -1,11 +1,12 @@
 .progressList {
   display: flex;
-  align-items: flex-start;
   width: 100%;
   margin: 5px;
+  position: relative;
 
   .content {
     width: 100%;
+    position: relative;
     background-color: rgba(242, 244, 243, 0.4);
     border-radius: 12px;
     padding: 20px;
@@ -27,11 +28,8 @@
       border-radius: 12px;
       padding: 10px;
       scrollbar-width: none;
-      max-height: 200px;
+      max-height: 150px;
 
-      @media (max-width: 1300px) {
-        max-height: 120px;
-      }
     }
   }
 }

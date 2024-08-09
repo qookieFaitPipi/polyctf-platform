@@ -1,6 +1,5 @@
 .task {
-  width: 60%;
-  min-width: 550px;
+  width: calc(100% - 6px);
   margin: 0 auto;
   margin-top: 10px;
   cursor: pointer;
@@ -29,9 +28,7 @@
 }
 
 .active {
-  width: 60%;
-  min-width: 550px;
-  margin: 0 auto;
+  width: calc(100% - 6px);
   margin-top: 10px;
   cursor: pointer;
   border-radius: 50px;

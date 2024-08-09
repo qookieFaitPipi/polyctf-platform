@@ -8,6 +8,7 @@
 
   .content {
     width: 100%;
+    position: relative;
     background-color: rgba(242, 244, 243, 0.4);
     border-radius: 12px;
     padding: 20px;
@@ -29,10 +30,7 @@
       padding: 10px;
       border-radius: 10px;
       scrollbar-width: none;
-
-      @media (max-width: 1300px) {
-        max-height: 120px;
-      }
+      max-height: 150px;
     }
   }
 }

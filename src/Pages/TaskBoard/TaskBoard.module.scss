@@ -4,10 +4,6 @@
   flex-direction: column;
   background-color: #111;
 
-  @media (max-width: 1300px) {
-    height: 100vh;
-  }
-
   .list {
     position: relative;
     display: flex;
@@ -19,22 +15,11 @@
     background-color: #111;
     height: calc(100vh - 106px);
 
-
-    @media (max-width: 1300px) {
-      height: auto;
-    }
-
-
     .title {
       display: flex;
       align-items: center;
       color: #f4f4f4;
-      margin-top: 20px;
-      margin-bottom: 40px;
-      
-      @media (max-width: 1300px) {
-        margin-top: 40px;
-      }
+      margin-bottom: 20px;
 
       .arrow {
         margin-left: 10px;
@@ -44,18 +29,12 @@
     }
 
     .content {
+      position: relative;
       display: flex;
       width: 100vw;
       justify-content: space-around;
       align-items: center;
-
-
-      @media (max-width: 1300px) {
-        flex-direction: column;
-        height: calc(100vh - 106px);
-        justify-content: flex-start;
-      }
-
+      height: 80%;
     }
   }
 }
