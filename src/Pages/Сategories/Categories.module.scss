@@ -12,7 +12,8 @@
     height: calc(100vh - 106px);
     overflow-y: auto;
     overflow-x: hidden;
-    
+    scrollbar-width: none !important;
+
     .title {
       display: flex;
       flex-direction: column;
@@ -35,6 +36,7 @@
       width: 100vw;
       margin-top: 20px;
       position: relative;
+      scrollbar-width: none !important;
 
       @media (max-width: 1300px) {
         

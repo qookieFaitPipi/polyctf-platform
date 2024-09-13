@@ -16,6 +16,8 @@
     position: fixed;
     left: 50%;
     top: 50%;
+    width: 50%;
+    height: 80%;
     transform: translate(-50%, -50%);
     background-color: #222222;
     padding: 50px;
@@ -53,6 +55,15 @@
     .text {
       margin-top: 10px;
       text-align: justify;
+      overflow-y: auto;
+      height: 100%;
+      scrollbar-width: thin;
+      scrollbar-color: #C79EED transparent;
+      padding-right: 5px;
+      
+      a {
+        color: #C79EED;
+      }
     }
   }
 }

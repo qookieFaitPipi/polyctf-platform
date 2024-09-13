@@ -131,7 +131,7 @@ const MHeader = () => {
           </div>
         </div>
         <div className={styles.flagbox}>
-          <input className={styles.input} onChange={(e) => setFlag(e.target.value)} value={flag} placeholder='Flag: PolyCTF{}' type="text" />
+          <input className={styles.input} onChange={(e) => setFlag(e.target.value)} value={flag} placeholder="Flag: PolyCTF{flag}" type="text" />
           <input className={styles.button} onClick={userCheckFlag} type="submit" value="TRY" />
         </div>
         <div onClick={() => setPopupState(!popupState)} className={styles.right}>

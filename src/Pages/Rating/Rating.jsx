@@ -38,7 +38,7 @@ const Rating = () => {
     <section className={styles.table}>
       <div className={styles.content} style={{backgroundImage: `url(${vector})`}}>
         <div className={styles.top}>
-          <input className={styles.search} onChange={(e) => setSearchValue(e.target.value)} value={searchValue} placeholder='Search for login' type="text" />
+          <input className={styles.search} onChange={(e) => setSearchValue(e.target.value)} value={searchValue} placeholder="Search for login" type="text" />
         </div>
         <div className={styles.field}>
           <div className={styles.top}>

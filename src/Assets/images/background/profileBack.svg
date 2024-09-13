@@ -5,9 +5,33 @@
 <circle cx="1437" cy="263" r="449" fill="url(#paint2_radial_180_144)"/>
 <circle opacity="0.5" cx="618" cy="220" r="191" fill="url(#paint3_radial_180_144)"/>
 <circle opacity="0.39" cx="1813" cy="522" r="274" fill="url(#paint4_radial_180_144)"/>
-<circle opacity="0.31" cx="91" cy="477" r="154.5" stroke="#C79EED" stroke-width="5" stroke-dasharray="10 10"/>
-<circle opacity="0.31" cx="1784.5" cy="767.5" r="243" stroke="#C79EED" stroke-width="5" stroke-dasharray="10 10"/>
-<circle opacity="0.9" cx="637.5" cy="139.5" r="366" stroke="#3B1767" stroke-width="5" stroke-dasharray="10 10"/>
+<circle opacity="0.31" cx="91" cy="477" r="154.5" stroke="#C79EED" stroke-width="5" stroke-dasharray="10 10">
+<animateTransform attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0 91 477"
+      to="360 91 477"
+      dur="50s"
+      repeatCount="indefinite" />
+</circle>
+<circle opacity="0.31" cx="1784.5" cy="767.5" r="243" stroke="#C79EED" stroke-width="5" stroke-dasharray="10 10">
+<animateTransform attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0 1784.5 767.5"
+      to="360 1784.5 767.5"
+      dur="50s"
+      repeatCount="indefinite" />
+</circle>
+<circle opacity="0.9" cx="637.5" cy="139.5" r="366" stroke="#3B1767" stroke-width="5" stroke-dasharray="10 10">
+<animateTransform attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0 637.5 139.5"
+      to="360 637.5 139.5"
+      dur="50s"
+      repeatCount="indefinite" />
+</circle>
 </g>
 <defs>
 <radialGradient id="paint0_radial_180_144" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(232 683) rotate(90) scale(364.35)">

@@ -12,9 +12,8 @@ const Footer = () => {
     <div className={styles.footer} id='scrollContacts'>
       <div className={styles.content}>
         <div className={styles.links}>
-          <Link to='https://t.me/polyctf'><img className={styles.icon} src={telegramIcon} alt="" /></Link>
-          <Link to='https://vk.com/sss_hsc_spbstu'><img className={styles.icon} src={vkIcon} alt="" /></Link>
-          <Link to='https://vk.com/sss_hsc_spbstu'><img className={styles.icon} src={discordIcon} alt="" /></Link>
+          <Link to='https://t.me/polyctf'><img className={styles.icon} src={telegramIcon} alt="tg" /></Link>
+          <Link to='https://vk.com/sss_hsc_spbstu'><img className={styles.icon} src={vkIcon} alt="vk" /></Link>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ const NotFound = () => {
     <div className={styles.notfound}>
       <NotfoundHeader />
       <div className={styles.text} style={{backgroundImage: `url(${vector})`}}>
-        N0t fOuNd
+        N0t f0uNd
       </div>
     </div>
   )
