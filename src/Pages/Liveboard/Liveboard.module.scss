@@ -4,6 +4,10 @@
   z-index: 3;
   overflow-y: hidden;
 
+  @media (max-width: 700px) {
+
+  }
+
   .content {
     display: flex;
     justify-content: center;
@@ -23,6 +27,12 @@
       background-color: rgba(242, 244, 243, 0.7);
       border-radius: 10px;
 
+      @media (max-width: 700px) {
+        width: 90%;
+        height: 100%;
+        border-radius: 0px;
+      }
+
       .top {
         width: 100%;
         display: flex;
@@ -31,6 +41,10 @@
         background-color: rgba(199, 158, 237, 0.6);
         border-radius: 50px;
         margin-bottom: 20px;
+
+        @media (max-width: 700px) {
+          align-items: center;
+        }
 
         .title {
           text-align: center;

@@ -9,7 +9,7 @@ const Point = ({id, name, place, sumPoints, countSolvedTasks, isMe, searchValue}
 
   return (
     <>
-      <Link to={location === '/liveboard' ? '/liveboard' : `/profile/${id}`} className={styles.point} style={searchValue === '' ? {} : {backgroundColor: 'transparent'}} >
+      <Link to={location === '/board' ? '/board' : `/profile/${id}`} className={styles.point} style={searchValue === '' ? {} : {backgroundColor: 'transparent'}} >
         <div className={styles.content}>
           <div className={styles.text} style={isMe ? {color: '#3b1767'} : {}}>{place}</div>
           <div className={styles.text} style={isMe ? {color: '#3b1767'} : {}}>{name}</div>

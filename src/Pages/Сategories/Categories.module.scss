@@ -10,7 +10,6 @@
     background-size: cover;
     background-color: #111;
     height: calc(100vh - 106px);
-    overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none !important;
 
@@ -36,12 +35,7 @@
       width: 100vw;
       margin-top: 20px;
       position: relative;
-      scrollbar-width: none !important;
-
-      @media (max-width: 1300px) {
-        
-      }
-    
+      scrollbar-width: none !important;    
     }
   }
 }

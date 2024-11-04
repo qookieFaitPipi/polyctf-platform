@@ -7,35 +7,18 @@
 
   .content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: #222222;
     height: 106px;
 
     .left {
-      margin-left: 40px;
 
       .logo {
         height: 58px;
         width: 130px;
         cursor: pointer;
       }
-    }
-    .middle {
-      display: flex;
-      align-items: center;
-      color: #C79EED;
-      font-size: 38px;
-    }
-
-    .right {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-right: 40px;
-      cursor: pointer;
-      color: #C79EED;
-      font-size: 38px;
     }
   }
 }

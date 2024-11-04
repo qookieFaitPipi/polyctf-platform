@@ -39,8 +39,9 @@ const Categories = () => {
     } catch (err) {
       console.log(err);
     }
+    
     dispatch(resetTask());
-  }, [dispatch, updateState]);
+  }, [ updateState ]);
 
   return (
     <section className={styles.categories}>

@@ -64,9 +64,9 @@ const Register = ({setRegisterModalState, setEntryModalState}) => {
           <div className={styles.title}>РЕГИСТРАЦИЯ</div>
           <input className={styles.input} value={userLogin} onChange={(e) => setUserLogin(e.target.value)} placeholder='username' type="text" />
           <input className={styles.input} value={userEmail} onChange={(e) => setUserEmail(e.target.value)} placeholder='email' type="email" />
-          <input className={styles.input} value={userPassword} onChange={(e) => setUserPassword(e.target.value)} placeholder='password' type="text" />
+          <input className={styles.input} value={userPassword} onChange={(e) => setUserPassword(e.target.value)} placeholder='password' type="password" />
           <input className={styles.button} tabIndex="1" value='СОЗДАТЬ АККАУНТ' type="submit" onClick={() => setCaptchaState(true)} />
-          <div className={styles.regLink} onClick={() => {setEntryModalState(false) ; setRegisterModalState(false)}}>Уже есть аккаунт?</div>
+          <div className={styles.regLink} onClick={() => {setEntryModalState(true) ; setRegisterModalState(false)}}>Уже есть аккаунт?</div>
         </form>
       }
     </div>

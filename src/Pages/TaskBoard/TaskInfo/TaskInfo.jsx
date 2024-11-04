@@ -4,6 +4,9 @@ import styles from './TaskInfo.module.scss';
 // axios
 import axios from 'axios';
 
+// react-router-dom
+import { useParams } from 'react-router-dom';
+
 // redux
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -17,11 +20,12 @@ import Task from '../../../Components/Task/Task';
 import { Link } from 'react-router-dom';
 
 const TaskInfo = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const params = useParams();
   const { selectedTaskId, selectedTask } = useSelector((state) => state.TaskSlice);
 
   useEffect(() => {
-    if(!selectedTaskId || !selectedTask) {
+    if(!params.id || !params.id) {
       return;
     }
     const headers = {
@@ -31,7 +35,7 @@ const TaskInfo = () => {
       headers: headers
     };
     const userData = {
-      task_id: selectedTaskId
+      task_id: params.id
     }
     try {
       axios.post('https://backend.polyctf.ru/api/get_task', userData, config).then((res) => {
@@ -40,9 +44,8 @@ const TaskInfo = () => {
     } catch(err) {
       console.log(err);
     }
-  }, [dispatch, selectedTaskId])
+  }, [dispatch, params.id])
 
-  console.log(selectedTask)
 
   const parseAuthors = (authorString) => {
     const authorArray = authorString.split(';');
@@ -51,12 +54,12 @@ const TaskInfo = () => {
       const match = author.match(regex);
       if (match) {
         return {
-          name: match[1],   // Ник
-          link: match[2],   // Ссылка
+          name: match[1],
+          link: match[2],
         };
       }
       return null;
-    }).filter(Boolean);  // Убираем элементы, которые не подошли под шаблон
+    }).filter(Boolean);
   };
 
   const authors = parseAuthors(selectedTask.task_author || '');
@@ -65,23 +68,27 @@ const TaskInfo = () => {
     <div className={styles.taskInfo}>
       <div className={styles.content}>
         <div className={styles.description}>
-          <Task id={selectedTaskId} name={selectedTask.task_name} />
+          <Task id={params.id} name={selectedTask.task_name} solved={selectedTask.is_solved} />
           <div className={styles.taskTitle}>DESCRIPTION</div>
-          <div  className={styles.taskText}>{selectedTask.task_description}</div>
+          <div  className={styles.taskDescription}>{selectedTask.task_description}</div>
           <div className={styles.taskTitle}>DEGREE OF DIFFICULTY</div>
           <div className={styles.taskText}>{selectedTask.task_level}</div>
           <div className={styles.taskTitle}>LINK</div>
 
-          <Link className={styles.taskText} to={selectedTask?.task_link && selectedTask.task_link.includes("nc") ? '#' : selectedTask?.task_link}>
+          <Link 
+            className={styles.taskText} 
+            to={selectedTask?.task_link && selectedTask.task_link.includes("nc") ? '#' : selectedTask?.task_link}
+            target={selectedTask?.task_link && selectedTask.task_link.includes("nc") ? undefined : '_blank'}
+          >
             {selectedTask?.task_link && selectedTask.task_link.includes("nc") ? selectedTask.task_link : 'Ссылка'}
           </Link>
 
           <div className={styles.taskTitle}>AUTHOR</div>
            {authors.length > 0 ? (
               authors.map((author, index) => (
-                <span className={styles.taskText} style={{paddingBottom: '10px'}} key={index}>
+                <Link to={author.link} className={styles.taskText} style={{paddingBottom: '10px'}} key={index}>
                   @{author.name}
-                </span>
+                </Link>
               ))
             ) : (
               'Unknown'

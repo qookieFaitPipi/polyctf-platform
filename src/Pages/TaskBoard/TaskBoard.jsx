@@ -26,7 +26,6 @@ import categoryBack from './../../Assets/images/background/categoryBack.svg';
 import { setUpdateState } from '../../Redux/slices/UpdateSlice';
 
 const TaskBoard = () => {
-  const { selectedTaskId } = useSelector((state) => state.TaskSlice);
   const { updateState } = useSelector((state) => state.UpdateSlice);
 
   const dispatch = useDispatch();
@@ -64,7 +63,7 @@ const TaskBoard = () => {
           <img className={styles.arrow} src={arrow} alt="" /><div style={{textDecoration: 'underline', marginLeft: '10px', fontSize: '20px', fontWeight: 500}}>TASKS</div>
         </div>
         <div className={styles.content}>
-          <CSSTransition in={selectedTaskId ? true : false} classNames='alert' timeout={400} unmountOnExit><TaskInfo /></CSSTransition>
+          <CSSTransition in={params.id ? true : false} classNames='alert' timeout={400} unmountOnExit><TaskInfo /></CSSTransition>
           <TaskList
             tasks={tasks}
           />

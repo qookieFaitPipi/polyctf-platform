@@ -28,7 +28,7 @@ function App() {
         <div style={{height: '106px'}}></div>
         <Categories/>
       </>}/>
-      <Route path="/categories/:name" element={<>
+      <Route path="/categories/:name/:id?" element={<>
         <MHeader />
         <div style={{height: '106px'}}></div>
         <TaskBoard/>
@@ -44,7 +44,7 @@ function App() {
         <Profile/>
       </>}/>
 
-      <Route path="/liveboard" element={<>
+      <Route path="/board" element={<>
         <RHeader />
         <div style={{height: '106px'}}></div>
         <Liveboard/>

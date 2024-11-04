@@ -14,7 +14,7 @@ const Reward = () => {
             PEACEMAKER
           </div>
           <div className={styles.rewardText}>
-            Завершить все здаания без первой крови
+            Завершить все задания без первой крови
           </div>
         </div>
       </div>

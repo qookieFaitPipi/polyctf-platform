@@ -61,7 +61,7 @@ const Entry = ({setEntryModalState, setRegisterModalState}) => {
       <form className={styles.content} onSubmit={handleSubmit} onClick={e => e.stopPropagation()}>
         <div className={styles.title}>ВХОД</div>
         <input className={styles.input} value={userLogin} onChange={(e) => setUserLogin(e.target.value)} placeholder='username' type="text" />
-        <input className={styles.input} value={userPassword} onChange={(e) => setUserPassword(e.target.value)} placeholder='password' type="text" />
+        <input className={styles.input} value={userPassword} onChange={(e) => setUserPassword(e.target.value)} placeholder='password' type="password" />
         <button className={styles.button} onClick={userAuth} type="submit">ВОЙТИ</button>
         <div className={styles.subText}>Забыл пароль? <span className={styles.colored}>ВОССТАНОВИТЬ</span></div>
         <div className={styles.or}>ИЛИ</div>

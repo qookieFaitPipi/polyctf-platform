@@ -29,15 +29,13 @@ import { setUpdateState } from '../../Redux/slices/UpdateSlice';
 const MHeader = () => {
   const { updateState } = useSelector((state) => state.UpdateSlice);
   const dispatch = useDispatch();
-  
+
   const [username, setUsername] = useState('');
+  const [userID, setUserID] = useState();
   const [userImage, setUserImage] = useState('');
 
   const [location, setLocation] = useState(window.location.pathname)
   const [popupState, setPopupState] = useState(false);
-
-  const decodedToken = jwtDecode(getCookie('token'));
-  const subValue = decodedToken.sub;
 
   const [flag, setFlag] = useState('');
   
@@ -57,15 +55,16 @@ const MHeader = () => {
     
     axios.get("https://backend.polyctf.ru/api/get_user_info", config)
     .then((res) => {
+      setUserID(res.data.id)
       setUsername(res.data.username);
       setUserImage(res.data.image);
       dispatch(setUpdateState(false));
     })
     .catch((err) => {
-      if (err.response.status === 422) {
-        navigate('/');
+      if(err.response.status === 422 || err.response.status === 401) {
+        navigate('/')
       }
-    });
+    })
   }, [ dispatch, navigate, updateState])
 
   const userCheckFlag = () => {
@@ -127,11 +126,11 @@ const MHeader = () => {
           <div className={styles.navBlock}>
             <Link to='/categories' className={location.split('/').find(path => path === 'categories') ? styles.navItemActive : styles.navItem} onClick={() => setLocation('/categories')}>CATEGORIES</Link>
             <Link to='/rating' className={location === '/rating' ? styles.navItemActive : styles.navItem} onClick={() => setLocation('/rating')}>RATING</Link>
-            <Link to={`/profile/${subValue}`} className={location.split('/').find(path => path === 'profile') ? styles.navItemActive : styles.navItem} onClick={() => setLocation('profile')}>PROFILE</Link>
+            <Link to={`/profile/${userID}`} className={location.split('/').find(path => path === 'profile') ? styles.navItemActive : styles.navItem} onClick={() => setLocation('profile')}>PROFILE</Link>
           </div>
         </div>
         <div className={styles.flagbox}>
-          <input className={styles.input} onChange={(e) => setFlag(e.target.value)} value={flag} placeholder="Flag: PolyCTF{flag}" type="text" />
+          <input className={styles.input} onChange={(e) => setFlag(e.target.value)} value={flag} placeholder="PolyCTF{flag}" type="text" />
           <input className={styles.button} onClick={userCheckFlag} type="submit" value="TRY" />
         </div>
         <div onClick={() => setPopupState(!popupState)} className={styles.right}>

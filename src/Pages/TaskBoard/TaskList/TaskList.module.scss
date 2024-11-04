@@ -7,6 +7,8 @@
   width: 40%;
   max-width: 600px;
   max-height: 520px;
+  overflow-y: auto;
+  scrollbar-width: none !important;
 
   .content {
     overflow-y: auto;

@@ -4,17 +4,17 @@
   background-position: right center;
   background-color: rgba(26, 26, 26, 1);
   background-size: contain;
-  height: 600px;
   border-radius: 50px;
 
   @media (max-width: 1000px) {
     background-position: center;
     background-size: cover;
-    height: auto;
+    background-image: none !important;
   }
 
   .content {
     display: flex;
+    justify-content: space-between;
   
     .leftBlock {
       display: flex;
@@ -53,6 +53,14 @@
         @media (max-width: 1000px) {
           display: none;
         }
+      }
+    }
+
+    .owl {
+      width: 500px;
+
+      @media (max-width: 1200px) {
+        display: none;
       }
     }
   }
